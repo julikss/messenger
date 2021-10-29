@@ -1,0 +1,26 @@
+{
+  "name": "messenger",
+  "version": "1.0.0",
+  "description": "created by ULUMANANA",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julikss/messenger.git"
+  },
+  "keywords": [
+    "messenger"
+  ],
+  "author": "ULUMANANA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julikss/messenger/issues"
+  },
+  "homepage": "https://github.com/julikss/messenger#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.3.1"
+  }
+}
