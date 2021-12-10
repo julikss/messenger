@@ -4,7 +4,8 @@
   "description": "created by ULUMANANA",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server",
+    "dev": "nodemon server"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "homepage": "https://github.com/julikss/messenger#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "nodemon": "^2.0.15",
     "socket.io": "^4.3.1"
   }
 }
