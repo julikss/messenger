@@ -16,4 +16,5 @@ async function registerUser(event) {
       passwd
     })
   }).then((res) => res.json())
+
 }
