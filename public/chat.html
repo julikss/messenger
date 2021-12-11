@@ -1,17 +1,71 @@
 <!DOCTYPE html>
+<html>
 
- <html lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/form.css">
-  </head>
-  <body>
-    <div class="center">
-      <h1>there must be a chatroom</h1>
+    <link rel="stylesheet" href="./css/chat.css">
+
+</head>
+
+<body>
+    <div class="contacts">
+        <h1>Контакты</h1>
+        <form>
+            <input type="search" name="search_contacts" placeholder="Поиск" class="search">
+            <button type="submit" class="search_button">
+        </form>
+        <div class="contact1"></div>
+        <div class="profile_photo_contact1">
+            <img src="./images/ok_emoji.png" class="profile_photos_contact1">
+        </div>
+        <p class="ulumanana">ULUMANANA</p>
+        <p class="online">online</p>
+        <div class="contact2-5"></div>
+        <div class="profile_photo_contact2"></div>
+        <p class="ulumanana">ULUMANANA</p>
+        <p class="online">online</p>
+        <div class="contact2-5"></div>
+        <div class="profile_photo_contact3"></div>
+        <p class="ulumanana">ULUMANANA</p>
+        <p class="online">offline</p>
+        <div class="contact2-5"></div>
+        <div class="profile_photo_contact4"></div>
+        <p class="ulumanana">ULUMANANA</p>
+        <p class="online">offline</p>
+        <div class="contact2-5"></div>
+        <div class="profile_photo_contact5"></div>
+        <p class="ulumanana">ULUMANANA</p>
+        <p class="online">online</p>
     </div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+    <div class="chat">
+       <div class="forName"></div>
+       <div class="message1"></div>
+       <div class="profile_photo_contact_formessaging1-3"></div>
+       <div class="message2"></div>
+       <div class="profile_photo_contact_formessaging">
+        <img src="./images/ok_emoji.png" class="profile_photos_contact_formessaging ">
+       </div>
+       <div class="message3"></div>
+       <div class="profile_photo_contact_formessaging1-3 "></div>
+       <div class="message4"></div>
+       <div class="profile_photo_contact_formessaging">
+        <img src="./images/ok_emoji.png" class="profile_photos_contact_formessaging ">
+       </div>
+       <form>
+            <input type="text" name="write_messages" placeholder="Введите текст..." class="write_messages">
+            <button type="submit" class="stikers"></button>
+        </form>
+    </div>
+    <div class="profile">
+        <div class="avatarka">
+            <div class="profile_photo">
+                <img src="./images/ok_emoji.png" class="profile_photos">
+            </div>
+            <p class="green">&#8226;</p>
+            <h2>ULUMANANA</h2>
+            <p class="profile_online">online</p>
+        </div>
+    </div>
+</body>
+
 </html>
-
-

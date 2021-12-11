@@ -1,0 +1,292 @@
+body {
+    background-color: #1d2437;
+}
+
+.contacts {
+    width: 400px;
+    height: 700px;
+    background-color: #222a3f;
+    margin-left: 50px;
+    margin-top: 100px;
+}
+
+.chat {
+    width: 750px;
+    height: 700px;
+    background-color: #222a3f;
+    margin-left: 460px;
+    margin-top: -700px;
+}
+
+.profile {
+    width: 280px;
+    height: 700px;
+    background-color: #222a3f;
+    margin-left: 1220px;
+    margin-top: -700px;
+}
+
+h1 {
+    font-family: Courier New, monospace;
+    color: white;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+form {
+    position: relative;
+    width: 200px;
+}
+
+.search {
+    background-color: #1d2437;
+    border: none;
+    color: #a6a6a6;
+    height: 30px;
+    width: 360px;
+    margin-left: 20px;
+    padding-left: 10px;
+}
+
+.contacts button {
+    position: absolute;
+    top: 6px;
+    right: -170px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: #1d2437;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.contacts button:before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: #a6a6a6;
+}
+
+.contact1 {
+    height: 70px;
+    width: 360px;
+    background-color: #1d2437;
+    margin-left: -333px;
+    margin-top: 100px;
+}
+
+.profile_photo_contact1 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #8c52ff;
+    margin-top: -60px;
+    margin-left: -320px;
+}
+
+.profile_photo_contact2 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #00c2cb;
+    margin-top: -60px;
+    margin-left: -320px;
+}
+
+.profile_photo_contact3 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #ffdc5d;
+    margin-top: -60px;
+    margin-left: -320px;
+}
+
+.profile_photo_contact4 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #ff66c4;
+    margin-top: -60px;
+    margin-left: -320px;
+}
+
+.profile_photo_contact5 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #ff914d;
+    margin-top: -60px;
+    margin-left: -320px;
+}
+
+.profile_photos_contact1 {
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+}
+
+.ulumanana {
+    color: white;
+    font-size: medium;
+    margin-top: -40px;
+    margin-left: -400px;
+}
+
+.online {
+    color: white;
+    font-size: x-small;
+    margin-top: -13px;
+    margin-left: -470px;
+}
+
+.contact2-5 {
+    height: 70px;
+    width: 360px;
+    background-color: #1d2437;
+    margin-left: -333px;
+    margin-top: 45px;
+}
+
+.forName {
+    height: 70px;
+    width: 750px;
+    background-color: #1d2437;
+    border-top: solid 40px #222a3f;
+    border-radius: 5px;
+}
+
+.message1 {
+    height: 60px;
+    width: 330px;
+    background-color: #ea5c8c;
+    border-radius: 8px;
+    margin-top: 40px;
+    margin-left: 350px;
+}
+
+.message2 {
+    height: 70px;
+    width: 330px;
+    background-color: #38466d;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-left: 70px;
+}
+
+.message3 {
+    height: 60px;
+    width: 330px;
+    background-color: #ea5c8c;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-left: 350px;
+}
+
+.message4 {
+    height: 90px;
+    width: 330px;
+    background-color: #38466d;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-left: 70px;
+}
+
+.profile_photo_contact_formessaging {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #8c52ff;
+    margin-top: -30px;
+    margin-left: 10px;
+}
+
+.profile_photo_contact_formessaging1-3 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #7a8ad1;
+    margin-top: -30px;
+    margin-left: 690px;
+}
+
+.profile_photos_contact_formessaging {
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+}
+
+.write_messages {
+    height: 50px;
+    width: 700px;
+    background-color: #1d2437;
+    color: #a6a6a6;
+    border: none;
+    padding-left: 20px;
+    margin-left: 20px;
+    margin-top: 50px;
+}
+
+.chat button {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #1d2437;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    border: none;
+    margin-left: 700px;
+    margin-top: -40px;
+}
+
+.chat button:before {
+    content: "\263A";
+    font-family: FontAwesome;
+    font-size: 25px;
+    color: #a6a6a6;
+}
+
+.avatarka {
+    height: 200px;
+    width: 250px;
+    background-color: #1d2437;
+    border-radius: 5px;
+    margin-left: 15px;
+    border-top: solid 40px #222a3f;
+}
+
+.profile_photo {
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    background-color: #8c52ff;
+    margin-top: 20px;
+    margin-left: 70px;
+}
+
+.profile_photos {
+    height: 80px;
+    width: 80px;
+    padding: 10px;
+}
+
+.green {
+    color: #7ed957;
+    font-size: 70px;
+    margin-top: -50px;
+    margin-left: 130px;
+}
+
+h2 {
+    font-family: Courier New, monospace;
+    color: white;
+    padding-left: 62px;
+    margin-top: -83px;
+}
+
+.profile_online {
+    font-family: Courier New, monospace;
+    color: white;
+    margin-left: 95px;
+    margin-top: -18px;
+}
