@@ -1,10 +1,9 @@
-const loginForm = getElementById('login');
-loginForm.addEventListener('click', loginUser);
+const loginForm = document.getElementById('login');
 
 const loginUser = async(someEvent) => {
     someEvent.preventDefault();
-    const username = document.getElementById('username');
-    const password = document.getElementById('password');
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
     const res = await fetch('/api/login', {
         method: 'POST',
@@ -21,3 +20,5 @@ const loginUser = async(someEvent) => {
 
     }*/
 }
+
+loginForm.addEventListener('submit', loginUser);

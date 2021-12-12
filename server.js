@@ -2,11 +2,13 @@ const path = require('path');
 const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
-const mongoo = require('mongoose');
+const mongoose = require('mongoose');
+const user = require('./public/js/user');
 
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+mongoose.connect('mongodb://localhost:27017/');
 
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,7 +31,7 @@ io.on('connection', socket => {
 app.post('/api/login', async(request, response) => {
     const { username, password } = request.body;
 
-
+    const user1 = user.find({ username, password });
 
 });
 

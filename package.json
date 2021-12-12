@@ -23,7 +23,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^6.1.1",
+    "node-gyp": "^8.4.1",
+    "node-waf": "^1.0.0",
     "nodemon": "^2.0.15",
-    "socket.io": "^4.3.1"
+    "socket.io": "^4.4.0"
   }
 }
