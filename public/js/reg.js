@@ -1,12 +1,12 @@
-const form = document.getElementById('reg-form');
+/*const form = document.getElementById('reg-form');
 form.addEventListener('submit', registerUser);
 
 async function registerUser(event) {
   event.preventDefault()
-  const username = document.getElementById('username')
-  const passwd = document.getElementById('passwd')
+  const username = document.getElementById('username').value
+  const passwd = document.getElementById('passwd').value
 
-  const result = await fetch('/api/register', {
+  const result = await fetch('/api/reg', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -18,3 +18,4 @@ async function registerUser(event) {
   }).then((res) => res.json())
 
 }
+*/
