@@ -24,7 +24,7 @@ io.on('connection', socket => {
 
     //runs when client disconnects
     socket.on('disconnect', () => {
-        io.emit('message', 'A user has left the chat')
+        io.emit('message', 'A user has left the chat');
     })
 });
 
@@ -32,10 +32,11 @@ const PORT = 3000 || process.env.PORT;
 
 const runServer = async() => {
     try {
-        await mongoose.connect(`mongodb+srv://ulu:ul67d3@cluster0.xnfaj.mongodb.net/messager?retryWrites=true&w=majority`)
-        app.listen(PORT, () => console.log(`Server is running at ${PORT}`))
+        await mongoose.connect(`mongodb+srv://ulu:ul67d3@cluster0.xnfaj.mongodb.net/messager?retryWrites=true&w=majority`);
+        app.listen(PORT, () => console.log(`Server is running at ${PORT}`));
     } catch (e) {
-        console.log(e)
+        console.log(e);
     }
 }
+
 runServer();
