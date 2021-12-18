@@ -2,6 +2,7 @@ const User = require('./user');
 const Role = require('./role');
 const bcrypt = require('bcryptjs');
 
+
  class authController{
   async registration(req, res){
     try {
@@ -15,6 +16,7 @@ const bcrypt = require('bcryptjs');
       const user = new User({username, password: hashPassword, roles:[userRole.value]})
       await user.save();
       return res.json({message:'Successfully'})
+
     } catch(e) {
       console.log(e)
       res.status(400).json({message: 'Registration error'})
@@ -33,10 +35,10 @@ const bcrypt = require('bcryptjs');
   }
   async getUsers(req, res){
     try {
-      /*const userRole = new Role();
-      const adminRole = new Role({value: 'ADMIN'});
-      await userRole.save();
-      await adminRole.save();*/
+      //const userRole = new Role();
+      //const adminRole = new Role({value: 'ADMIN'});
+      //await userRole.save();
+      //await adminRole.save();
         res.json("server work")
     } catch(e) {
 

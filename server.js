@@ -30,9 +30,9 @@ io.on('connection', socket => {
 
 const PORT = 3000 || process.env.PORT;
 
-/*server.listen(PORT, () => {
-console.log(`Server is running at ${PORT}`)
-});*/
+//server.listen(PORT, () => {
+//console.log(`Server is running at ${PORT}`)
+//});
 const start = async() => {
   try {
     await mongoose.connect(`mongodb+srv://ulu:ul67d3@cluster0.xnfaj.mongodb.net/messager?retryWrites=true&w=majority`)
