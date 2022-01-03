@@ -1,6 +1,7 @@
+'use strict';
+
 const socket = io();
 
-
 socket.on('message', message => {
-    console.log(message);
+  console.log(message);
 });
