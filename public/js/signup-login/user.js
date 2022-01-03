@@ -8,17 +8,10 @@ const User = new Schema({
         require: true
     },
 
-<<<<<<< HEAD
     password: {
         type: String,
         require: true
     },
-=======
-  password:{
-   type: String,
-   require: true}
-
->>>>>>> 6c287f9e00a71a03db04f870e561c0f67b5cc19f
 
 });
 
