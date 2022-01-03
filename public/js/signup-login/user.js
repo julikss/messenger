@@ -9,9 +9,9 @@ const User = new Schema({
 
   password:{
    type: String,
-   require: true},
+   require: true}
 
-  roles: [{type: String, ref: 'Role'}]
+
 });
 
 module.exports = model('User', User);

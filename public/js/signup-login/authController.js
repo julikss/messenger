@@ -23,7 +23,7 @@ class authController {
                 return res.status(400).json({ message: 'Username is already taken' });
             }
             const hashPassword = bcrypt.hashSync(password, 7);
-            const user = new User({ username, password: hashPassword, roles: [userRole.value] });
+            const user = new User({ username, password: hashPassword });
             await user.save();
             return res.json({ message: 'Successfully' });
         } catch (error) {
