@@ -9,24 +9,24 @@
 
 <body>
     <div class="center">
-      <h1>Log in</h1>
-      <form method="post">
-        <div class="txt_field">
-          <input type="text" required>
-          <span></span>
-          <label>Username</label>
-        </div>
-        <div class="txt_field">
-          <input type="password" required>
-          <span></span>
-          <label>Password</label>
-        </div>
-        <div class="pass">Forgot Password?</div>
-        <input type="submit" value="Login" onclick="document.location = './chat.html'">
-        <div class="signup_link">
-          Not a member? <a href="./index.html">Sign up</a>
-        </div>
-      </form>
+        <h1>Log in</h1>
+        <form method="post">
+            <div class="txt_field">
+                <input type="text" id="username" required>
+                <span></span>
+                <label>Username</label>
+            </div>
+            <div class="txt_field">
+                <input type="password" id="password" required>
+                <span></span>
+                <label>Password</label>
+            </div>
+            <div class="pass">Forgot Password?</div>
+            <input type="submit" id="login" value="Login" onclick="document.location = './chat.html'">
+            <div class="signup_link">
+                Not a member? <a href="./index.html">Sign up</a>
+            </div>
+        </form>
     </div>
     <script src="./js/signup-login/login.js"></script>
 </body>
