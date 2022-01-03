@@ -12,7 +12,8 @@ const loginUser = async(event) => {
         },
         body: JSON.stringify({
             username,
-            password
+            password,
+            email
         })
     }).then(res => res.json());
 
@@ -20,6 +21,11 @@ const loginUser = async(event) => {
 
 }
 
+<<
+<< << < HEAD
 if (form) {
     form.addEventListener('click', loginUser);
-}
+} ===
+=== =
+form.addEventListener('click', loginUser); >>>
+>>> > 90 a36f56839a42e7bb0154058d5baffce47bbea4
