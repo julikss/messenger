@@ -7,7 +7,7 @@ router.post('/registration',
     check('username', "cannot be empty").notEmpty(),
     check('password', "too small/too long").isLength({ min: 4, max: 12 }),
     controller.registration);
-router.post('/login', controller.login);
+router.post('/api/login', controller.login);
 router.get('/users', controller.getUsers);
 
 module.exports = router;
