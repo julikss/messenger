@@ -5,6 +5,8 @@ const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 const UserService = require('./services/UserService');
+const mongoose = require("mongoose");
+const authRouter = require('./public/js/authRouter');
 
 const app = express();
 const server = http.createServer(app);
@@ -13,6 +15,8 @@ const userManager = new UserService();
 
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+app.use("/auth", authRouter);
 
 
 const botName = 'Messenger Bot';
@@ -26,7 +30,7 @@ io.on('connection', socket => {
     socket.join(room);
 
     // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
+    socket.emit('message', formatMessage(botName, 'Welcome to Messanger!'));
 
     // Broadcast when a user connects
     socket.broadcast
@@ -74,3 +78,14 @@ const PORT = process.env.PORT || '3000';
 server.listen(PORT, () => {
   console.log(`Server is running at ${PORT}`);
 });
+
+const runServer = async() => {
+    try {
+        await mongoose.connect(`mongodb+srv://ulu:ul67d3@cluster0.xnfaj.mongodb.net/messager?retryWrites=true&w=majority`);
+        app.listen(PORT, () => console.log(`Server is running at ${PORT}`));
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+runServer();
