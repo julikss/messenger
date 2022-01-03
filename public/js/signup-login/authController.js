@@ -17,7 +17,7 @@ class authController {
             if (!registerError.isEmpty()) {
                 return res.status(400).json({ message: 'Error', registerError });
             }
-            const { username, password } = req.body; //destruction
+            const { username, password, email } = req.body; //destruction
             const candidate = await User.findOne({ username });
             if (candidate) {
                 return res.status(400).json({ message: 'Username is already taken' });
