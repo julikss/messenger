@@ -1,11 +1,11 @@
-const search = document.getElementById('search');
+const searchMesg = document.getElementById('search-message');
 const messages = require('');
 
 const highlightMesg = (mesg) => {
 
 }
 
-search.addEventListener('keyup', (event) => {
+searchMesg.addEventListener('keyup', (event) => {
     const searchData = event.target.value.toLowerCase();
 
     const foundMesg = messages.filter((el) => {
