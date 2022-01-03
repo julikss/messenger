@@ -1,4 +1,4 @@
-/*const form = document.getElementById('reg-form');
+const form = document.getElementById('reg-form');
 form.addEventListener('submit', registerUser);
 
 async function registerUser(event) {
@@ -18,4 +18,3 @@ async function registerUser(event) {
   }).then((res) => res.json())
 
 }
-*/

@@ -4,6 +4,7 @@ const http = require('http');
 const socketio = require('socket.io');
 const mongoose = require("mongoose");
 const authRouter = require('./public/js/authRouter');
+const jsonParser = express.json();
 
 const app = express();
 const server = http.createServer(app);

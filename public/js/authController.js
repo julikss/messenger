@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
  class authController{
   async registration(req, res){
     try {
+        //res.json("server work")
       const {username, password} = req.body;
       const candidate = await User.findOne({username});
       if (candidate) {
@@ -18,8 +19,8 @@ const bcrypt = require('bcryptjs');
       return res.json({message:'Successfully'})
 
     } catch(e) {
-      console.log(e)
-      res.status(400).json({message: 'Registration error'})
+      /*console.log(e)
+      res.status(400).json({message: 'Registration error'})*/
 
     }
 
