@@ -76,10 +76,6 @@ io.on('connection', socket => {
 
 const PORT = process.env.PORT || '3000';
 
-server.listen(PORT, () => {
-  console.log(`Server is running at ${PORT}`);
-});
-
 const runServer = async() => {
     try {
         await mongoose.connect(`mongodb+srv://ulu:ul67d3@cluster0.xnfaj.mongodb.net/messager?retryWrites=true&w=majority`);
