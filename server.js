@@ -11,10 +11,19 @@ const bodyParser = require('body-parser');
 const formatMessage = require('./helpers/formatMessage');
 
 const jsonParser = bodyParser.json();
+const PORT = process.env.PORT || '3000';
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, {
+  cors: {
+      origin: `http://localhost:${PORT}`,
+      methods: ["GET", "POST"],
+      transports: ['websocket', 'polling'],
+      credentials: true
+  },
+  allowEIO3: true
+});
 const userManager = new UserService();
 
 //set static folder
@@ -84,12 +93,11 @@ io.on('connection', socket => {
     });
 });
 
-const PORT = process.env.PORT || '3000';
 
 const runServer = async() => {
     try {
         await mongoose.connect(`mongodb+srv://ulu:ul67d3@cluster0.xnfaj.mongodb.net/messager?retryWrites=true&w=majority`);
-        app.listen(PORT, () => console.log(`Server is running at ${PORT}`));
+        server.listen(PORT, () => console.log(`Server is running at ${PORT}`));
     } catch (e) {
         console.log(e);
     }
