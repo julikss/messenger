@@ -14,8 +14,8 @@ const search = () => {
         for (let el of todolist) {
             el.todo.toLowerCase().includes(searchData);
 
-            let str = el.innerText;
-            el.innerHTML = highlightNote(str, searchData.length);
+            let str = el.todo.innerText;
+            el.todo.innerHTML = highlightNote(str, searchData.length);
         }
     } else {
         console.log('Empty input');
