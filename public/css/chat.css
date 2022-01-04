@@ -246,6 +246,25 @@ form {
     color: #a6a6a6;
 }
 
+.chat .send {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #1d2437;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    border: none;
+    margin-left: 650px;
+    margin-top: -40px;
+}
+
+.chat .send:before {
+    content: " \27A5";
+    font-family: FontAwesome;
+    font-size: 25px;
+    color: #a6a6a6;
+}
+
 .avatarka {
     height: 200px;
     width: 250px;
