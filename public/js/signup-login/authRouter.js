@@ -8,6 +8,7 @@ const jsonParser = bodyParser.json();
 
 router.post('/registration',
     check('username', "cannot be empty").notEmpty(),
+    check('email', "cannot be empty").isEmail(),
     check('password', "too small/too long").isLength({ min: 4, max: 12 }),
     controller.registration);
 router.post('/api/login', jsonParser, controller.login);

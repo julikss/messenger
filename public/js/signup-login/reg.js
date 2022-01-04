@@ -12,7 +12,8 @@ const registerUser = async(event) => {
         },
         body: JSON.stringify({
             username,
-            passwd
+            passwd,
+            email
         })
     }).then((res) => res.json())
 
