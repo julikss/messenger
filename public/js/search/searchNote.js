@@ -1,25 +1,26 @@
-/*const searchNote = document.getElementById('search-note');
-const todolist = require('./todolist');
+const searchNote = document.querySelector('#input');
+
 const highlightNote = (note, length) => {
     return '<mark>' +
         note.slice(0, length) +
         '</mark>';
 }
 
-searchNote.addEventListener('click', (event) => {
-    const searchData = event.target.value.toLowerCase();
+const search = () => {
+    const searchData = this.value.trim().toLowerCase();
+    const todolist = require('./todolist');
 
     if (searchData != '') {
-        const foundNote = todolist.filter((el) => {
+        for (let el of todolist) {
             el.todo.toLowerCase().includes(searchData);
-        });
-        highlightNote(foundNote.todo, searchData.length);
-    } else console.log('Empty input');
-});*/
 
-const searchNote = document.querySelector('#input');
-const search = () => {
-    let searchData = this.value.trim();
+            let str = el.innerText;
+            el.innerHTML = highlightNote(str, searchData.length);
+        }
+    } else {
+        console.log('Empty input');
+    };
+
 }
 
 searchNote.oninput = search();

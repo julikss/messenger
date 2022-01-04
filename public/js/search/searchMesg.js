@@ -1,15 +1,26 @@
-const searchMesg = document.getElementById('search-message');
-const messages = require('');
+const searchMesg = document.querySelector('#input');
 
-const highlightMesg = (mesg) => {
+const highlightMesg = (mesg, length) => {
+    return '<mark>' +
+        mesg.slice(0, length) +
+        '</mark>';
+}
+
+const search = () => {
+    const searchData = this.value.trim().toLowerCase();
+    const messages = require('./');
+
+    if (searchData != '') {
+        for (let el of messages) {
+            el.text.toLowerCase().includes(searchData);
+
+            let str = el.innerText;
+            el.innerHTML = highlightMesg(str, searchData.length);
+        }
+    } else {
+        console.log('Empty input');
+    };
 
 }
 
-searchMesg.addEventListener('keyup', (event) => {
-    const searchData = event.target.value.toLowerCase();
-
-    const foundMesg = messages.filter((el) => {
-        el.text.toLowerCase().includes(searchData);
-    });
-    highlightMesg(foundMesg);
-});
+searchMesg.oninput = search();
