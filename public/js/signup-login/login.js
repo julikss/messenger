@@ -12,8 +12,7 @@ const loginUser = async(event) => {
         },
         body: JSON.stringify({
             username,
-            password,
-            email
+            password
         })
     }).then(res => res.json());
 
