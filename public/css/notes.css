@@ -1,68 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
 body {
-    background-color: #FFD78A;
-    font-family: sans-serif;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box; }
-  
-  .container {
-    margin: 0 auto;
-    padding-top: 50px; }
-  
-  .important {
-    font-weight: bold;
-    color: #A40E11; }
-  
-  .todo_list {
-    max-width: 400px;
-    display: block;
-    margin: 0 auto 40px;
-    background-color: #1BA39C;
-    padding: 30px;
-    border-radius: 10px;
-    -webkit-box-shadow: 0 2px 10px 0 #074b83;
-    box-shadow: 0 2px 10px 0 #074b83; }
-  
-  h1 {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 20px;
-    color: #fff;
-    font-size: 30px; }
-  
-  .create_new_todo {
-    text-align: center; }
-  
-  input[type=text] {
-    width: 376px;
-    padding: 10px; }
-  
-  button {
-    margin-top: 10px;
+    background-color: #1d2437;
+}
+
+.contacts {
     width: 400px;
+    height: 700px;
+    background-color: #222a3f;
+    margin-left: 50px;
+    margin-top: 100px;
+}
+
+.chat {
+    width: 750px;
+    height: 700px;
+    background-color: #222a3f;
+    margin-left: 460px;
+    margin-top: -700px;
+}
+
+.profile {
+    width: 280px;
+    height: 700px;
+    background-color: #222a3f;
+    margin-left: 1220px;
+    margin-top: -700px;
+}
+
+h1 {
+    font-family: Courier New, monospace;
+    color: white;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+form {
+    position: relative;
+    width: 200px;
+}
+
+.search {
+    position: fixed;
+    background-color: #1d2437;
+    border: none;
+    color: #a6a6a6;
+    height: 30px;
+    width: 360px;
+    top: 175px;
+    left: 70px;
+    padding-left: 10px;
+}
+
+.search_button {
+    position: absolute;
+    top: 25px;
+    right: -160px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: #1d2437;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search_button:before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: #a6a6a6;
+}
+
+.contact1 {
+    height: 70px;
+    width: 360px;
+    background-color: #1d2437;
+    margin-left: -333px;
+    margin-top: 100px;
+}
+
+.profile_photo_contact1 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #8c52ff;
+    margin-top: -60px;
+    margin-left: -320px;
+}
+
+.profile_photo_contact2 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #00c2cb;
+    margin-top: -60px;
+    margin-left: -320px;
+}
+
+.profile_photo_contact3 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #ffdc5d;
+    margin-top: -60px;
+    margin-left: -320px;
+}
+
+.profile_photo_contact4 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #ff66c4;
+    margin-top: -60px;
+    margin-left: -320px;
+}
+
+.profile_photo_contact5 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #ff914d;
+    margin-top: -60px;
+    margin-left: -320px;
+}
+
+.profile_photos_contact1 {
+    height: 50px;
+    width: 50px;
+    padding: 5px;
+}
+
+.ulumanana {
+    color: white;
+    font-size: medium;
+    margin-top: -40px;
+    margin-left: -400px;
+}
+
+.online {
+    color: white;
+    font-size: x-small;
+    margin-top: 0;
+    margin-left: -470px;
+}
+
+.contact2-5 {
+    height: 70px;
+    width: 360px;
+    background-color: #1d2437;
+    margin-left: -333px;
+    margin-top: 45px;
+}
+
+.todoList {
+    position: fixed;
+    top: 135px;
+    width: 750px;
+    height: 70px;
+    background-color: #1d2437;
+}
+
+.todo {
+    position: absolute;
+    padding-left: 0;
+    top: 250px;
+}
+
+.todo li {
     padding: 10px;
-    cursor: pointer; }
-  
-  .todo {
-    padding-left: 0; }
-    .todo li {
-      padding: 1em;
-      list-style-type: none; }
-      .todo li:not(:last-child) {
-        border-bottom: 1px solid #000; }
-  
-  input[type=checkbox] {
+    list-style-type: none;
+}
+
+.todo li:not(:last-child) {
+    width: 747px;
+    border-bottom: 1px solid #000;
+}
+
+input[type=checkbox] {
     opacity: 0;
-    position: absolute; }
-  
-  input[type=checkbox], label {
+    position: absolute;
+}
+
+input[type=checkbox],
+label {
     display: inline-block;
     vertical-align: middle;
     margin: 5px;
-    cursor: pointer; }
-  
-  input[type=checkbox] + label:before {
+    cursor: pointer;
+}
+
+input[type=checkbox]+label:before {
     content: '';
-    background: #1BA39C;
+    /*background: #ff66c4;*/
     border-radius: 5px;
     border: 2px solid #ddd;
     display: inline-block;
@@ -71,18 +205,95 @@ body {
     height: 10px;
     padding: 2px;
     margin-right: 10px;
-    text-align: center; }
-  
-  input[type=checkbox]:checked + label:before {
+    text-align: center;
+}
+
+input[type=checkbox]:checked+label:before {
     content: "";
     display: inline-block;
     width: 1px;
     height: 5px;
-    border: solid blue;
+    border: solid #ff66c4;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     border-radius: 0;
-    margin: 0 15px 5px 5px; }
-  
+    margin: 0 15px 5px 5px;
+}
+
+.message {
+    position: fixed;
+    height: 50px;
+    width: 720px;
+    background-color: #1d2437;
+    color: #a6a6a6;
+    border: none;
+    padding-left: 20px;
+    left: 470px;
+    top: 740px;
+}
+
+.chat .add {
+    position: fixed;
+    top: 743px;
+    right: 670px;
+    width: 53px;
+    height: 40px;
+    border: none;
+    background: #1d2437;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.chat .add:before {
+    content: "\27A5";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: #a6a6a6;
+}
+
+.avatarka {
+    height: 250px;
+    width: 250px;
+    background-color: #1d2437;
+    border-radius: 5px;
+    margin-left: 15px;
+    border-top: solid 40px #222a3f;
+}
+
+.profile_photo {
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    background-color: #8c52ff;
+    margin-top: 20px;
+    margin-left: 70px;
+}
+
+.profile_photos {
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+}
+
+.green {
+    color: #7ed957;
+    font-size: 70px;
+    margin-top: -50px;
+    margin-left: 130px;
+}
+
+h2 {
+    font-family: Courier New, monospace;
+    color: white;
+    padding-left: 62px;
+    margin-top: -15px;
+}
+
+.profile_online {
+    font-family: Courier New, monospace;
+    color: white;
+    margin-left: 95px;
+    margin-top: 5px;
+}
