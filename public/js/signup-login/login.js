@@ -21,10 +21,12 @@ const loginUser = async(event) => {
 
     if (result.message == 'Correct Password') {
         document.location = './chat.html';
+    } else if (result.message == 'User not found') {
+        alert('Wrong username!');
     } else {
-        console.log(result);
+        alert('Wrong password!');
+        //console.log(result);
     }
-
 }
 
 if (form) {
