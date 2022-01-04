@@ -8,6 +8,7 @@ const UserService = require('./services/UserService');
 const mongoose = require("mongoose");
 const authRouter = require('./public/js/signup-login/authRouter');
 const bodyParser = require('body-parser');
+const formatMessage = require('./helpers/formatMessage');
 
 const jsonParser = bodyParser.json();
 
