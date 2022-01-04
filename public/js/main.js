@@ -3,7 +3,7 @@
 const chatForm = document.getElementById('chat_form');
 const chatMessages = document.querySelector('.chat-messages');
 // eslint-disable-next-line no-undef
-const socket = io();
+const socket = io("ws://localhost:3000");
 
 socket.on('message', message => {
     console.log(message);
