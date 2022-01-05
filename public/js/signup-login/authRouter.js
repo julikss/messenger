@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 
 const jsonParser = bodyParser.json();
 
-router.post('/registration',
+router.post('/registration', jsonParser,
     check('username', "cannot be empty").notEmpty(),
     check('email', "cannot be empty").isEmail(),
     check('password', "too small/too long").isLength({ min: 4, max: 12 }),
