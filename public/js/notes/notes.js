@@ -110,16 +110,13 @@ todo.addEventListener('contextmenu', function(e){
 	});
 
 	//copy text 
-	let buffer = '';
-	copy.addEventListener('click',  function(e){
-		navigator.clipboard.readText()
-    .then(() => {
-       buffer = text;
-	   console.log(buffer);
-    })
-    .catch(err => {
-      console.log('Something went wrong', err);
-    })
+	copy.addEventListener('click',  function(){
+		navigator.clipboard.writeText(text);
+	});
+
+	//edit text 
+	edit.addEventListener('click', function(){
+		
 	})
 		
 })
