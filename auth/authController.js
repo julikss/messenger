@@ -1,89 +1,95 @@
+'use strict';
+
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const { secretKey } = {
-    secretKey: "SECRET_KEY_RANDOM"
+  secretKey: 'SECRET_KEY_RANDOM'
 };
 
-const randomToken = (userId) => {
-    return jwt.sign({ userId }, secretKey, { expiresIn: "24h" })
-}
+const randomToken = userId => jwt.sign(
+  { userId }, secretKey, { expiresIn: '24h' }
+);
 
-class authController {
-    async registration(req, res) {
-        try {
-            const registerError = validationResult(req);
-            if (!registerError.isEmpty()) {
-                return res.status(400).json({ message: 'Error', registerError });
-            }
-            const { email, username, password } = req.body; //destruction
-            const candidate = await User.findOne({ username });
-
-            if (candidate) {
-                return res.status(400).json({ message: 'Username is already taken' });
-            }
-            const hashPassword = bcrypt.hashSync(password, 7);
-
-            if (!registerError.isEmpty() && registerError.registerError[0].param === 'email') {
-                return res.status(400).send('Invalid email address. Please try again.')
-            }
-
-            const user = new User({ email, username, password: hashPassword });
-            await user.save();
-            return res.json({ message: 'Successfully' });
-
-
-        } catch (error) {
-            console.log(error);
-            res.status(400).json({ message: 'Error found' });
-
-        }
-
+const registration = async (req, res) => {
+  try {
+    const registerError = validationResult(req);
+    if (!registerError.isEmpty()) {
+      return res.status(400).json({ message: 'Error', registerError });
     }
-    async login(req, res) {
-        try {
-            const { username, password } = req.body; //destruction
-            const loggedUser = await User.findOne({ username });
 
-            if (!loggedUser) {
-                return res.status(400).json({ message: 'User not found' });
-            }
-            const userPassword = bcrypt.compareSync(password, loggedUser.password);
+    const { email, username, password } = req.body; //destruction
+    const candidate = await User.findOne({ username });
 
-            if (userPassword) {
-                return res.status(400).json({ message: 'Correct Password' });
-            } else {
-                return res.status(400).json({ message: 'Incorrect password' });
-            }
-            const token = randomToken(loggedUser._id);
-            return res.json({ token });
-
-        } catch (error) {
-            console.log(error);
-            res.status(400).json({ message: 'Error found' });
-
-        }
+    if (candidate) {
+      return res.status(400).json({ message: 'Username is already taken' });
     }
-    async getUsers(req, res) {
-        try {
-            const allUsers = await User.find();
-            res.json(allUsers);
-        } catch (e) {
-            console.log(error);
-            res.status(400).json({ message: 'Error found' });
-        }
-    }
-    async deleteUser(req, res) {
-        try {
-            const { username, password } = req.params;
-            const deleted = await User.deleteOne({ username });
-            res.json(deleted);
-        } catch (e) {
-            console.log(error);
-            res.status(400).json({ message: 'Error found' });
-        }
-    }
-}
+    const hashPassword = bcrypt.hashSync(password, 7);
 
-module.exports = new authController();
+    if (!registerError.isEmpty() && registerError.registerError[0].param === 'email') {
+      return res.status(400).send('Invalid email address. Please try again.');
+    }
+
+    const user = new User({ email, username, password: hashPassword });
+    await user.save();
+    return res.json({ message: 'Successfully' });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: 'Error found' });
+  }
+};
+
+const login = async (req, res) => {
+  try {
+    const { username, password } = req.body; //destruction
+    const loggedUser = await User.findOne({ username });
+
+    if (!loggedUser) {
+      return res.status(400).json({ message: 'User not found' });
+    }
+
+    const userPassword = bcrypt.compareSync(password, loggedUser.password);
+
+    if (userPassword) {
+      const token = randomToken(loggedUser._id);
+      return res.status(400).json({
+        token,
+        message: 'Correct Password'
+      });
+    } else {
+      return res.status(400).json({ message: 'Incorrect password' });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: 'Error found' });
+  }
+};
+
+const getUsers = async (req, res) => {
+  try {
+    const allUsers = await User.find();
+    res.json(allUsers);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: 'Error found' });
+  }
+};
+
+const deleteUser = async (req, res) => {
+  try {
+    const { username, password } = req.params;
+    const deleted = await User.deleteOne({ username });
+    res.json(deleted);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: 'Error found' });
+  }
+};
+
+module.exports = {
+  registration,
+  login,
+  getUsers,
+  deleteUser
+};

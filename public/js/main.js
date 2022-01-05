@@ -3,14 +3,14 @@
 const chatForm = document.getElementById('chat_form');
 const chatMessages = document.querySelector('.chat');
 // eslint-disable-next-line no-undef
-const socket = io("ws://localhost:3000");
+const socket = io('ws://localhost:3000');
 
 socket.on('message', message => {
     console.log(message);
     outputMessage(message);
 });
 
-chatForm.addEventListener('submit', (send) => {
+chatForm.addEventListener('submit', send => {
     send.preventDefault();
 
     let msg = send.target.elements.msg.value;
