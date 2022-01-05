@@ -297,3 +297,34 @@ h2 {
     margin-left: 95px;
     margin-top: 5px;
 }
+
+.menu{
+    width: 12rem;
+    height: 4.5rem;
+    background-color: #f4f4f4;
+    color: #333;
+    border: 1px solid #aaa;
+    box-shadow: 2px 2px 2px #999;
+    border-radius: 0.2rem;
+    list-style: none;
+    position: fixed;
+    z-index: 100;
+
+}
+.menu.off{
+    top: -200%;
+    left: -200%;
+}
+.menu-item{
+    height: 1.5rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+    font-weight: 100;
+    padding: 0 1rem;
+    cursor: pointer;
+}
+.menu-item:hover,
+.menu-item:active{
+    color: #000;
+    font-weight: 500;
+}
