@@ -6,7 +6,7 @@ const http = require('http');
 const socketio = require('socket.io');
 const UserService = require('./services/UserService');
 const mongoose = require("mongoose");
-const authRouter = require('./public/js/signup-login/authRouter');
+const authRouter = require('./auth/authRouter');
 const bodyParser = require('body-parser');
 const formatMessage = require('./helpers/formatMessage');
 
