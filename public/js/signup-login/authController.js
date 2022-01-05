@@ -66,12 +66,22 @@ class authController {
     }
     async getUsers(req, res) {
         try {
-
-            res.json("server work");
+            const allUsers = await User.find();
+            res.json(allUsers);
         } catch (e) {
-
+            console.log(error);
+            res.status(400).json({ message: 'Error found' });
         }
-
+    }
+    async deleteUser(req, res) {
+        try {
+            const { username, password } = req.params;
+            const deleted = await User.deleteOne({ username });
+            res.json(deleted);
+        } catch (e) {
+            console.log(error);
+            res.status(400).json({ message: 'Error found' });
+        }
     }
 }
 

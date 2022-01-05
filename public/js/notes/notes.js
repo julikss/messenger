@@ -124,3 +124,34 @@ function hideMenu(e){
 	menu.style.top = '-200%';
 	menu.style.left = '-200%';
 }
+
+
+
+const highlightNote = (note, pos, length) => {
+    return note.slice(0, pos) + '<mark>' +
+        note.slice(pos, pos + length) +
+        '</mark>' + note.slice(pos + length);
+}
+
+document.querySelector('#input').oninput = function() {
+    const searchData = this.value.trim().toLowerCase();
+    let items = document.querySelectorAll('.todo label');
+
+    if (searchData != '') {
+        for (let el of items) {
+            if (el.innerText.includes(searchData)) {
+                let str = el.innerText;
+                //console.log(el);
+                el.innerHTML = highlightNote(str, el.innerText.search(searchData), searchData.length);
+            } else {
+                el.innerHTML = el.innerText;
+            }
+        }
+    } else {
+        console.log('Empty input');
+        for (let el of items) {
+            el.innerHTML = el.innerText;
+        }
+    };
+
+};
