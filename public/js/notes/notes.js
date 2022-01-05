@@ -2,10 +2,14 @@ let addNote = document.querySelector('.message'),
 	addButton = document.querySelector('.add'),
 	todo = document.querySelector('.todo'), 
 	del = document.getElementById('delete'),
-	clear = document.getElementById('clear');
+	clear = document.getElementById('clear'),
+	mark = document.getElementById('mark'),
+	copy = document.getElementById('copy'),
+	edit = document.getElementById('edit');
 
 let todoList = [];
 let menu = null;
+
 
 document.addEventListener('DOMContentLoaded', function(){
 	 
@@ -76,41 +80,50 @@ todo.addEventListener('contextmenu', function(e){
 	//delete note
 	del.addEventListener('click', function(e){
 
-		console.log(e.target.innerHTML);
 		todoList.forEach(function(item, i){
 		if(item.todo === text) {
 			todoList.splice(i, 1);
+			displayMessage();
+			localStorage.setItem('todo', JSON.stringify(todoList));
 		}
-		//item.important =! item.important;
-		displayMessage();
-		localStorage.setItem('todo', JSON.stringify(todoList));
-	})
+		})
 	});
 
 	//clear note
-	clear.addEventListener('click', clearAllNotes);
+	clear.addEventListener('click', function(e) {
+		for(const item of todoList) {
+			todoList.splice(todoList.indexOf(item));
+			displayMessage();
+			localStorage.setItem('todo', JSON.stringify(todoList));
+		}
+	});
 
+	//mark as important
+	mark.addEventListener('click', function(e){
+		for(const item of todoList){
+			if(item.todo === text) {
+				item.important =! item.important;
+				displayMessage();
+				localStorage.setItem('todo', JSON.stringify(todoList));
+			}
+		}
+	});
 
+	//copy text 
+	let buffer = '';
+	copy.addEventListener('click',  function(e){
+		navigator.clipboard.readText()
+    .then(() => {
+       buffer = text;
+	   console.log(buffer);
+    })
+    .catch(err => {
+      console.log('Something went wrong', err);
+    })
+	})
 		
 })
 
-
-function clearAllNotes(e) {
-	e.preventDefault(); 
-	for(const item of todoList) {
-		todoList.splice(todoList.indexOf(item));
-		displayMessage();
-		localStorage.setItem('todo', JSON.stringify(todoList));
-	}
-}
-
-function markAsImportant(item) {
-
-}
-
-function copyToClipboard(e) {
-	
-}
 
 function displayMenu(e){
 	e.preventDefault(); 
