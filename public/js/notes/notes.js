@@ -10,7 +10,6 @@ let addNote = document.querySelector('.message'),
 let todoList = [];
 let menu = null;
 
-
 document.addEventListener('DOMContentLoaded', function(){
 	 
 	menu = document.querySelector('.menu');
@@ -25,36 +24,35 @@ if(localStorage.getItem('todo')){
 	displayMessage();
 }
 
-addButton.addEventListener('click', () => {
+addButton.addEventListener('click', inputNote);
+
+function inputNote(){
 	if(!addNote.value) return;
-
-		let newTodo = {
-			todo: addNote.value,
-			checked: false,
-			important: false
-		};
-
-		todoList.push(newTodo);
-		displayMessage();
-		localStorage.setItem('todo', JSON.stringify(todoList));
-		addNote.value = '';
-	});
+	let newTodo = {
+		todo: addNote.value,
+		checked: false,
+		important: false
+	};
+	todoList.push(newTodo);
+	
+	displayMessage();
+	localStorage.setItem('todo', JSON.stringify(todoList));
+	addNote.value = '';
+}
 
 function displayMessage(){
 	let displayMessage = '';
 	if(todoList.length === 0) todo.innerHTML = '';
 
-	//for (const todo of todoList) {
-		//for (let i=0; i<todoList.length; i++) {
-			todoList.forEach(function(item, i){
-				displayMessage += `
-				<li>
-				<input type='checkbox' id='item_${i}' ${item.checked ? 'checked' : ''}>
-				<label for='item_${i}' class='${item.important ? 'important' : ''}'>${item.todo}</label>
-				</li>
-				`;
-				todo.innerHTML = displayMessage;
-			});
+	todoList.forEach(function(item, i){
+		displayMessage += `
+			<li>
+			<input type='checkbox' id='item_${i}' ${item.checked ? 'checked' : ''}>
+			<label for='item_${i}' class='${item.important ? 'important' : ''}'>${item.todo}</label>
+			</li>
+			`;
+			todo.innerHTML = displayMessage;
+	});
 }
 
 todo.addEventListener('change', function(event){
@@ -79,7 +77,7 @@ todo.addEventListener('contextmenu', function(e){
 
 	//delete note
 	del.addEventListener('click', function(e){
-
+		hideMenu();
 		todoList.forEach(function(item, i){
 		if(item.todo === text) {
 			todoList.splice(i, 1);
@@ -91,6 +89,7 @@ todo.addEventListener('contextmenu', function(e){
 
 	//clear note
 	clear.addEventListener('click', function(e) {
+		hideMenu();
 		for(const item of todoList) {
 			todoList.splice(todoList.indexOf(item));
 			displayMessage();
@@ -100,6 +99,7 @@ todo.addEventListener('contextmenu', function(e){
 
 	//mark as important
 	mark.addEventListener('click', function(e){
+		hideMenu();
 		for(const item of todoList){
 			if(item.todo === text) {
 				item.important =! item.important;
@@ -111,14 +111,25 @@ todo.addEventListener('contextmenu', function(e){
 
 	//copy text 
 	copy.addEventListener('click',  function(){
+		hideMenu();
 		navigator.clipboard.writeText(text);
 	});
 
 	//edit text 
-	edit.addEventListener('click', function(){
-		
+	edit.addEventListener('click', () =>{
+		hideMenu();
+		todoList.forEach(function(item, i){
+			if(item.todo === text) {
+				addButton.addEventListener('click', () =>{
+					if(!addNote.value) return;
+					item.todo = addNote.value;
+					displayMessage();
+					localStorage.setItem('todo', JSON.stringify(todoList));
+					addNote.value = '';
+				});
+			}
+		})
 	})
-		
 })
 
 
