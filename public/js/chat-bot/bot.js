@@ -14,16 +14,27 @@ openChat.addEventListener('click', () => {
 
 //sending messages
 
-sendMesg.addEventListener('click', () => {
+const sendMessage = () => {
     const mesgText = inputText.value;
 
     const newMesg = `<div class="out-msg">
-    <span class="my-msg">${mesgText}</span>
-    </div>`;
+  <span class="my-msg">${mesgText}</span>
+  </div>`;
 
     chatWindow.insertAdjacentHTML("beforeend", newMesg);
     inputText.value = '';
-});
+
+    if (mesgText == "Hello") {
+        const reply = `<div class="income-msg">
+      <span id="income-m" class="reply">${mesgText}</span>
+      </div>`;
+        setTimeout(() => {
+            chatWindow.insertAdjacentHTML("beforeend", reply)
+        }, 600);
+    }
+}
+
+sendMesg.addEventListener('click', sendMessage);
 
 window.addEventListener('DOMContentLoaded', () => {
     picker.on('emoji', emoji => {
