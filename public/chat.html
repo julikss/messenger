@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div id="users">
+    <div id="contacts">
         <h1>Контакты</h1>
         <form>
             <input type="search" name="search_contacts" placeholder="Поиск" class="search">
@@ -20,9 +20,11 @@
         <div class="profile_photo_contact1">
             <img src="./images/ok_emoji.png" class="profile_photos_contact1">
         </div>
+        <div id="users">
         <div class="contact2-5" id="c_1">
             <p class="ulumanana">ULUMANANA</p>
         </div>
+        
         <div class="profile_photo_contact" id="profile_photo_contact2"></div>
         <div class="contact2-5" id="c_2">
             <p class="ulumanana">ULUMANANA</p>
@@ -37,6 +39,8 @@
             <p class="ulumanana">ULUMANANA</p>
         </div>
         <div class="profile_photo_contact" id="profile_photo_contact5"></div>
+
+    </div>
     </div>
     <div class="chat">
         <div class="forName">
@@ -60,6 +64,7 @@
             </div>
             <h2 id="ulumanana">ULUMANANA</h2>
         </div>
+        <button type="button" id="leave_room" class="btn">Leave Room</button>
     </div>
     <section>
         <button class="chat-btn"> 
@@ -84,7 +89,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
     <script src="./js/chat-bot/bot.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js" integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4=" crossorigin="anonymous"></script>
     <script type="application/javascript" src="/socket.io/socket.io.js"></script>
     <script type="application/javascript" src="js/main.js"></script>
 </body>

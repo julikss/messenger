@@ -9,7 +9,7 @@ body {
     background-color: #1d2437;
 }
 
-#users {
+#contacts {
     width: 400px;
     height: 700px;
     background-color: #222a3f;
@@ -418,4 +418,17 @@ input[type=checkbox]:checked+label:before {
 .important {
     font-weight: bold;
     color: #ff66c4;
+}
+
+#leave_room {
+    position: absolute;
+    bottom: 180px;
+    right: 365px;
+    background-color: #1d2437;
+    height: 50px;
+    width: 250px;
+    border: solid #30333b;
+    border-radius: 4pxs;
+    color: azure;
+    font-size: large;
 }
