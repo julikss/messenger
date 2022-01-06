@@ -1,3 +1,5 @@
+'use strict';
+
 //adding some constants
 
 const inputText = document.getElementById('input-text');
@@ -9,39 +11,39 @@ const emoji = document.querySelector('#emoji-btn');
 const picker = new EmojiButton();
 
 openChat.addEventListener('click', () => {
-    chat.classList.toggle('show');
+  chat.classList.toggle('show');
 });
 
 //sending messages
 
 const sendMessage = () => {
-    const mesgText = inputText.value;
+  const mesgText = inputText.value;
 
-    const newMesg = `<div class="out-msg">
+  const newMesg = `<div class="out-msg">
   <span class="my-msg">${mesgText}</span>
   </div>`;
 
-    chatWindow.insertAdjacentHTML("beforeend", newMesg);
-    inputText.value = '';
+  chatWindow.insertAdjacentHTML('beforeend', newMesg);
+  inputText.value = '';
 
-    if (mesgText == "Hello") {
-        const reply = `<div class="income-msg">
+  if (mesgText === 'Hello') {
+    const reply = `<div class="income-msg">
       <span id="income-m" class="reply">${mesgText}</span>
       </div>`;
-        setTimeout(() => {
-            chatWindow.insertAdjacentHTML("beforeend", reply)
-        }, 600);
-    }
-}
+    setTimeout(() => {
+      chatWindow.insertAdjacentHTML('beforeend', reply);
+    }, 600);
+  }
+};
 
 sendMesg.addEventListener('click', sendMessage);
 
 window.addEventListener('DOMContentLoaded', () => {
-    picker.on('emoji', emoji => {
-        document.getElementById('input-text').value += emoji;
-    });
+  picker.on('emoji', emoji => {
+    document.getElementById('input-text').value += emoji;
+  });
 
-    emoji.addEventListener('click', () => {
-        picker.togglePicker(emoji);
-    });
+  emoji.addEventListener('click', () => {
+    picker.togglePicker(emoji);
+  });
 });

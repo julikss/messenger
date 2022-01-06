@@ -13,55 +13,55 @@ const socket = io('ws://localhost:3000');
 socket.emit('joinRoom', { username, room });
 
 socket.on('roomUsers', ({ room, users }) => {
-    outputRoomName(room);
-    outputUsers(users);
+  outputRoomName(room);
+  outputUsers(users);
 });
 
 socket.on('message', message => {
-    console.log(message);
-    outputMessage(message);
+  console.log(message);
+  outputMessage(message);
 });
 
 chatForm.addEventListener('submit', send => {
-    send.preventDefault();
+  send.preventDefault();
 
-    let msg = send.target.elements.msg.value;
-    msg = msg.trim();
+  let msg = send.target.elements.msg.value;
+  msg = msg.trim();
 
-    if (!msg) {
-        return false;
-    }
+  if (!msg) {
+    return false;
+  }
 
-    socket.emit('MessageInChat', msg);
+  socket.emit('MessageInChat', msg);
 
-    send.target.elements.msg.value = '';
-    send.target.elements.msg.focus();
+  send.target.elements.msg.value = '';
+  send.target.elements.msg.focus();
 });
 
 
 // Output message to DOM
 function outputMessage(message) {
-    const div = document.createElement('div');
-    div.classList.add('message1');
-    div.innerHTML = `<p class="text">${message}</p>`;
-    // const p = document.createElement('p');
-    // p.classList.add('text');
-    // p.innerText = message.text;
-    // div.appendChild(p);
-    document.querySelector('.chat').appendChild(div);
+  const div = document.createElement('div');
+  div.classList.add('message1');
+  div.innerHTML = `<p class="text">${message}</p>`;
+  // const p = document.createElement('p');
+  // p.classList.add('text');
+  // p.innerText = message.text;
+  // div.appendChild(p);
+  document.querySelector('.chat').appendChild(div);
 }
 
 // Add room name to DOM
 function outputRoomName(room) {
-    roomName.innerText = room;
+  roomName.innerText = room;
 }
 
 
 function outputUsers(users) {
-    userList.innerHTML = '';
-    users.forEach((user) => {
-        const div = document.createElement('div');
-        div.innerText = `<p class="ulumanana">${user.username}</p>`;
-        userList.appendChild(div);
-    });
+  userList.innerHTML = '';
+  users.forEach(user => {
+    const div = document.createElement('div');
+    div.innerText = `<p class="ulumanana">${user.username}</p>`;
+    userList.appendChild(div);
+  });
 }
