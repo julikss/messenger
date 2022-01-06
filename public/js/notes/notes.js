@@ -1,4 +1,4 @@
-let addNote = document.querySelector('.message'),
+let addNote = document.querySelector('.note'),
     addButton = document.querySelector('.add'),
     todo = document.querySelector('.todo'),
     del = document.getElementById('delete'),

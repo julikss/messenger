@@ -10,44 +10,45 @@
 </head>
 
 <body>
-    <div class="contacts">
+    <div id="users">
         <h1>Контакты</h1>
         <form>
             <input type="search" name="search_contacts" placeholder="Поиск" class="search">
             <button type="submit" class="search_button">
         </form>
-        <div class="contact1"></div>
+        <div class="contact1"><a href="notes.html"><p class="Notes">NOTES</p></a></div>
         <div class="profile_photo_contact1">
             <img src="./images/ok_emoji.png" class="profile_photos_contact1">
         </div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">online</p>
-        <div class="contact2-5"></div>
-        <div class="profile_photo_contact2"></div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">online</p>
-        <div class="contact2-5"></div>
-        <div class="profile_photo_contact3"></div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">offline</p>
-        <div class="contact2-5"></div>
-        <div class="profile_photo_contact4"></div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">offline</p>
-        <div class="contact2-5"></div>
-        <div class="profile_photo_contact5"></div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">online</p>
+        <div class="contact2-5" id="c_1">
+            <p class="ulumanana">ULUMANANA</p>
+        </div>
+        <div class="profile_photo_contact" id="profile_photo_contact2"></div>
+        <div class="contact2-5" id="c_2">
+            <p class="ulumanana">ULUMANANA</p>
+        </div>
+        <div class="profile_photo_contact" id="profile_photo_contact3"></div>
+        
+        <div class="contact2-5" id="c_3">
+            <p class="ulumanana">ULUMANANA</p>
+        </div>
+        <div class="profile_photo_contact" id="profile_photo_contact4"></div>
+        <div class="contact2-5" id="c_4">
+            <p class="ulumanana">ULUMANANA</p>
+        </div>
+        <div class="profile_photo_contact" id="profile_photo_contact5"></div>
     </div>
     <div class="chat">
-        <div class="forName"></div>
+        <div class="forName">
+            <h1 class="todoList" id="room-name">Chat</h1>
+        </div>
         <div class="message1">
         <p class="text">
             
         </p>
        </div>
        <form id="chat_form"> 
-            <input id ="msg" type="text" name="write_messages" placeholder="Введите текст..." required autocomplete="off"/>
+            <input id ="msg" class = "message" type="text" name="write_messages" placeholder="Введите текст...">
             <button type="submit" class="stikers"></button>
             <button class="send"></button>
         </form>
@@ -57,9 +58,7 @@
             <div class="profile_photo">
                 <img src="./images/ok_emoji.png" class="profile_photos">
             </div>
-            <p class="green">&#8226;</p>
-            <h2>ULUMANANA</h2>
-            <p class="profile_online">online</p>
+            <h2 id="ulumanana">ULUMANANA</h2>
         </div>
     </div>
     <section>
@@ -88,7 +87,6 @@
     <script src="./js/chat-bot/bot.js"></script>
 
     <script type="application/javascript" src="/socket.io/socket.io.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
     <script type="application/javascript" src="js/main.js"></script>
 </body>
 

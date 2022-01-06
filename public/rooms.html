@@ -3,19 +3,27 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/rooms.css">
+    <link rel="stylesheet" href="./css/form.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1>Chatrooms</h1>
+    <div class="rooms_box">
+        <h1 id="chatrooms_h1">Chatrooms</h1>
         <hr>
-        <h3>Rooms</h3>
-        <select name="room" id="room">
+        <form action="chat.html">
+            <div class="form-control">
+                <label for="username" id="Username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter username..." required />
+            </div>
+            <div class="form-control">
+                <label id="chatrooms_h3">Rooms</label>
+                <select name="room" id="room">
                     <option value="ULUMANANA">ULUMANANA</option>
                     <option value="Chatroom">Chatroom</option>          
         </select>
-
+            </div>
+            <button type="submit" class="join_chat">Join Chat</button>
+        </form>
     </div>
 </body>
 
