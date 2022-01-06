@@ -383,12 +383,12 @@ input[type=checkbox]:checked+label:before {
 }
 
 .menu {
-    width: 12rem;
+    width: 7.5rem;
     height: 7.5rem;
-    background-color: #f4f4f4;
-    color: #333;
-    border: 1px solid #aaa;
-    box-shadow: 2px 2px 2px #999;
+    background: #1d2437;
+    opacity: 0.7;
+    color: #fbfcff;
+    border: 1px solid #fbfcff;
     border-radius: 0.2rem;
     list-style: none;
     position: fixed;
@@ -411,7 +411,7 @@ input[type=checkbox]:checked+label:before {
 
 .menu-item:hover,
 .menu-item:active {
-    color: #000;
+    color: #ff66c4;
     font-weight: 500;
 }
 
