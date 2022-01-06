@@ -43,19 +43,22 @@ button {
     overflow-x: hidden;
 }
 
-.income-msg {
+#income {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-.income-msg .msg {
+#income-m {
     background-color: #ea5c8c;
     color: white;
     padding: 0.5rem;
     border-radius: 25px;
-    margin-left: 1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+#income-m .reply {
+    margin-right: 15rem;
 }
 
 .input-area {
