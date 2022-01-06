@@ -5,8 +5,8 @@ const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 const UserService = require('./services/UserService');
-const mongoose = require("mongoose");
-const authRouter = require('./public/js/signup-login/authRouter');
+const mongoose = require('mongoose');
+const authRouter = require('./auth/authRouter');
 const bodyParser = require('body-parser');
 const formatMessage = require('./helpers/formatMessage');
 
@@ -17,10 +17,10 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server, {
   cors: {
-      origin: `http://localhost:${PORT}`,
-      methods: ["GET", "POST"],
-      transports: ['websocket', 'polling'],
-      credentials: true
+    origin: `http://localhost:${PORT}`,
+    methods: ['GET', 'POST'],
+    transports: ['websocket', 'polling'],
+    credentials: true
   },
   allowEIO3: true
 });
@@ -28,9 +28,9 @@ const userManager = new UserService();
 
 //set static folder
 app.use(
-    bodyParser.urlencoded({
-        extended: false
-    })
+  bodyParser.urlencoded({
+    extended: false
+  })
 );
 app.use(jsonParser);
 
@@ -43,6 +43,7 @@ const botName = 'Messenger Bot';
 
 // Run when client connects
 io.on('connection', socket => {
+<<<<<<< HEAD
     const { id } = socket;
 
     socket.on('joinRoom', ({ username, room }) => {
@@ -90,17 +91,66 @@ io.on('connection', socket => {
                 users: userManager.getRoomUsers(room)
             });
         }
+=======
+  const { id } = socket;
+
+  socket.on('joinRoom', ({ username, room }) => {
+    const user = userManager.addUser({ id, username, room });
+    socket.join(room);
+
+    // Welcome current user
+    socket.emit('message', formatMessage(botName, 'Welcome to Messanger!'));
+
+    // Broadcast when a user connects
+    socket.broadcast
+      .to(room)
+      .emit(
+        'message',
+        formatMessage(botName, `${user.username} has joined the chat`)
+      );
+
+    // Send users and room info
+    io.to(room).emit('roomUsers', {
+      room,
+      users: userManager.getRoomUsers(room)
+>>>>>>> 911df8d56728c17386d97adbe85a85f671227203
     });
+  });
+
+  // Listen for chatMessage
+  socket.on('chatMessage', msg => {
+    const user = userManager.getUser(id);
+    io.to(user.room).emit('message', formatMessage(user.username, msg));
+  });
+
+  // Runs when client disconnects
+  socket.on('disconnect', () => {
+    const user = userManager.removeUser(id);
+
+    if (user) {
+      const { room } = user;
+      io.to(room).emit(
+        'message',
+        formatMessage(botName, `${user.username} has left the chat`)
+      );
+
+      // Send users and room info
+      io.to(room).emit('roomUsers', {
+        room,
+        users: userManager.getRoomUsers(room)
+      });
+    }
+  });
 });
 
 
-const runServer = async() => {
-    try {
-        await mongoose.connect(`mongodb+srv://ulu:ul67d3@cluster0.xnfaj.mongodb.net/messager?retryWrites=true&w=majority`);
-        server.listen(PORT, () => console.log(`Server is running at ${PORT}`));
-    } catch (e) {
-        console.log(e);
-    }
-}
+const runServer = async () => {
+  try {
+    await mongoose.connect('mongodb+srv://ulu:ul67d3@cluster0.xnfaj.mongodb.net/messager?retryWrites=true&w=majority');
+    server.listen(PORT, () => console.log(`Server is running at ${PORT}`));
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 runServer();

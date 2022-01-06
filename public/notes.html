@@ -5,64 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/notes.css">
+    <link rel="stylesheet" href="./css/chat.css">
     <title>Document</title>
 </head>
 
 <body>
 
- 
-    <div class="contacts">
+
+    <div id="users">
         <h1>Контакты</h1>
         <form>
-            <input type="search" id="input" name="search_contacts" placeholder="Поиск" class="search">
+            <input type="search" name="search_contacts" placeholder="Поиск" class="search">
             <button type="submit" class="search_button">
         </form>
-        <div class="contact1"></div>
+        <div class="contact1"><a href="chat.html"><p class="Notes">NOTES</p></a></div>
         <div class="profile_photo_contact1">
             <img src="./images/ok_emoji.png" class="profile_photos_contact1">
         </div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">online</p>
-        <div class="contact2-5"></div>
-        <div class="profile_photo_contact2"></div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">online</p>
-        <div class="contact2-5"></div>
-        <div class="profile_photo_contact3"></div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">offline</p>
-        <div class="contact2-5"></div>
-        <div class="profile_photo_contact4"></div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">offline</p>
-        <div class="contact2-5"></div>
-        <div class="profile_photo_contact5"></div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">online</p>
+        <div class="contact2-5" id="c_1">
+            <p class="ulumanana">ULUMANANA</p>
+        </div>
+        <div class="profile_photo_contact" id="profile_photo_contact2"></div>
+        <div class="contact2-5" id="c_2">
+            <p class="ulumanana">ULUMANANA</p>
+        </div>
+        <div class="profile_photo_contact" id="profile_photo_contact3"></div>
+        
+        <div class="contact2-5" id="c_3">
+            <p class="ulumanana">ULUMANANA</p>
+        </div>
+        <div class="profile_photo_contact" id="profile_photo_contact4"></div>
+        <div class="contact2-5" id="c_4">
+            <p class="ulumanana">ULUMANANA</p>
+        </div>
+        <div class="profile_photo_contact" id="profile_photo_contact5"></div>
     </div>
     <div class="chat">
-        <div class="todo_list">
-            
-           <div class="create_new_todo">
+        <div>
             <h1 class="todoList">ToDo list</h1>
-    </div>
-
-    <ul class="menu">
-        <li class="menu-item" id="delete">Delete</li>
-        <li class="menu-item" id="mark">Highlight</li>
-        <li class="menu-item" id="clear">Clear</li>
-        <li class="menu-item" id="edit">Edit</li>
-        <li class="menu-item" id="copy">Copy</li>
-    </ul>
-
-    <div class="wrapper">
-        <ul class="todo"></ul>
-    </div>
-    
-    <input type="text" placeholder="Введите заметку..." class="message">
-    <button class="add"></button>
-
+            <ul class="menu">
+                <li class="menu-item" id="delete">Delete</li>
+                <li class="menu-item" id="mark">Highlight</li>
+                <li class="menu-item" id="clear">Clear</li>
+                <li class="menu-item" id="edit">Edit</li>
+                <li class="menu-item" id="copy">Copy</li>
+            </ul>
+            <div class="wrapper">
+                <ul class="todo"></ul>
+            </div>
+            <input type="text" placeholder="Введите заметку..." class="note" id="msg">
+            <button class="add"></button>
     </div>
     </div>
     <div class="profile">
@@ -70,9 +62,7 @@
             <div class="profile_photo">
                 <img src="./images/ok_emoji.png" class="profile_photos">
             </div>
-            <p class="green">&#8226;</p>
-            <h2>ULUMANANA</h2>
-            <p class="profile_online">online</p>
+            <h2 id="ulumanana">ULUMANANA</h2>
         </div>
     </div>
     <script src="./js/notes/notes.js"></script>

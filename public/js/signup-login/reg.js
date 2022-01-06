@@ -1,34 +1,43 @@
+'use strict';
+
 const form = document.getElementById('reg-form');
 
-const registerUser = async(event) => {
-    event.preventDefault()
-    const email = document.getElementById('reg-form').value
-    const username = document.getElementById('username').value
-    const passwd = document.getElementById('passwd').value
+const registerUser = async event => {
+  event.preventDefault();
+  const email = document.getElementById('email').value;
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('passwd').value;
 
-    const options = {
+  const options = {
     method: 'POST',
     headers: {
-        'Content-Type': 'application/json'
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       email,
       username,
-      passwd
+      password
     })
   };
 
-  const result = await fetch('/auth/registration', options)
-      .then(res => res.json());
-      if (result.message == 'Successfully') {
-          document.location = './chat.html';
-      } else if (result.message == 'Username is already taken') {
-          alert('user is already logged in');
-      } else {
-          alert('Try again');
-      }
-}
+  const { message } = await fetch('/auth/registration', options)
+    .then(res => res.json());
+
+  if (message === 'Successfully') {
+    document.location = './chat.html';
+  } else if (message === 'Username is already taken') {
+    alert('user is already logged in');
+  } else {
+    alert('Try again');
+  }
+  /*  if (result.candidate = result.User.findOne({ username }) ) {
+           alert('user is already logged in');
+       }
+       else {
+            document.location = './chat.html';
+       }*/
+};
 
 if (form) {
-    form.addEventListener('submit', registerUser);
+  form.addEventListener('click', registerUser);
 }

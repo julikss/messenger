@@ -4,57 +4,53 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/chat.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="./js/chat-bot/bot.css">
 </head>
 
 <body>
-    <div class="contacts">
+    <div id="users">
         <h1>Контакты</h1>
         <form>
             <input type="search" name="search_contacts" placeholder="Поиск" class="search">
             <button type="submit" class="search_button">
         </form>
-        <div class="contact1"></div>
+        <div class="contact1"><a href="notes.html"><p class="Notes">NOTES</p></a></div>
         <div class="profile_photo_contact1">
             <img src="./images/ok_emoji.png" class="profile_photos_contact1">
         </div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">online</p>
-        <div class="contact2-5"></div>
-        <div class="profile_photo_contact2"></div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">online</p>
-        <div class="contact2-5"></div>
-        <div class="profile_photo_contact3"></div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">offline</p>
-        <div class="contact2-5"></div>
-        <div class="profile_photo_contact4"></div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">offline</p>
-        <div class="contact2-5"></div>
-        <div class="profile_photo_contact5"></div>
-        <p class="ulumanana">ULUMANANA</p>
-        <p class="online">online</p>
+        <div class="contact2-5" id="c_1">
+            <p class="ulumanana">ULUMANANA</p>
+        </div>
+        <div class="profile_photo_contact" id="profile_photo_contact2"></div>
+        <div class="contact2-5" id="c_2">
+            <p class="ulumanana">ULUMANANA</p>
+        </div>
+        <div class="profile_photo_contact" id="profile_photo_contact3"></div>
+        
+        <div class="contact2-5" id="c_3">
+            <p class="ulumanana">ULUMANANA</p>
+        </div>
+        <div class="profile_photo_contact" id="profile_photo_contact4"></div>
+        <div class="contact2-5" id="c_4">
+            <p class="ulumanana">ULUMANANA</p>
+        </div>
+        <div class="profile_photo_contact" id="profile_photo_contact5"></div>
     </div>
     <div class="chat">
-       <div class="forName"></div>
-       <div class="message1"></div>
-       <div class="profile_photo_contact_formessaging1-3"></div>
-       <div class="message2"></div>
-       <div class="profile_photo_contact_formessaging">
-        <img src="./images/ok_emoji.png" class="profile_photos_contact_formessaging ">
-       </div>
-       <div class="message3"></div>
-       <div class="profile_photo_contact_formessaging1-3 "></div>
-       <div class="message4"></div>
-       <div class="profile_photo_contact_formessaging">
-        <img src="./images/ok_emoji.png" class="profile_photos_contact_formessaging ">
+        <div class="forName">
+            <h1 class="todoList" id="room-name">Chat</h1>
+        </div>
+        <div class="message1">
+        <p class="text">
+            
+        </p>
        </div>
        <form id="chat_form"> 
-            <input type="text" name="write_messages" placeholder="Введите текст..." class="write_messages">
+            <input id ="msg" class = "message" type="text" name="write_messages" placeholder="Введите текст...">
             <button type="submit" class="stikers"></button>
-            <button class="send"><i></i></button>
+            <button class="send"></button>
         </form>
     </div>
     <div class="profile">
@@ -62,13 +58,34 @@
             <div class="profile_photo">
                 <img src="./images/ok_emoji.png" class="profile_photos">
             </div>
-            <p class="green">&#8226;</p>
-            <h2>ULUMANANA</h2>
-            <p class="profile_online">online</p>
+            <h2 id="ulumanana">ULUMANANA</h2>
         </div>
     </div>
+    <section>
+        <button class="chat-btn"> 
+          <i class="material-icons"> comment </i>
+      </button>
+
+        <div class="chat-popup">
+            <div class="chat-area">
+                <div class="income-msg">
+                    <span class="msg"> Welcome to ULUMANANA chat! How can we help you?</span>
+                </div>
+            </div>
+            <div class="input-area">
+                <input id="input-text" type="text">
+                <button id="emoji-btn"> &#127773;</button>
+                <button class="submit"> 
+                <i class="material-icons"> send</i>
+              </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
+    <script src="./js/chat-bot/bot.js"></script>
+
     <script type="application/javascript" src="/socket.io/socket.io.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
     <script type="application/javascript" src="js/main.js"></script>
 </body>
 

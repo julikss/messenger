@@ -1,11 +1,11 @@
-let addNote = document.querySelector('.message'),
-	addButton = document.querySelector('.add'),
-	todo = document.querySelector('.todo'), 
-	del = document.getElementById('delete'),
-	clear = document.getElementById('clear'),
-	mark = document.getElementById('mark'),
-	copy = document.getElementById('copy'),
-	edit = document.getElementById('edit');
+let addNote = document.querySelector('.note'),
+    addButton = document.querySelector('.add'),
+    todo = document.querySelector('.todo'),
+    del = document.getElementById('delete'),
+    clear = document.getElementById('clear'),
+    mark = document.getElementById('mark'),
+    copy = document.getElementById('copy'),
+    edit = document.getElementById('edit');
 
 let todoList = [];
 let menu = null;
@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 
-if(localStorage.getItem('todo')){
-	todoList = JSON.parse(localStorage.getItem('todo'));
-	displayMessage();
+if (localStorage.getItem('todo')) {
+    todoList = JSON.parse(localStorage.getItem('todo'));
+    displayMessage();
 }
 
 addButton.addEventListener('click', inputNote);
@@ -55,17 +55,17 @@ function displayMessage(){
 	});
 }
 
-todo.addEventListener('change', function(event){
-	let idInput = event.target.getAttribute('id');
-	let forLabel = todo.querySelector('[for='+ idInput +']');
-	let valueLabel = forLabel.innerHTML;
+todo.addEventListener('change', function(event) {
+    let idInput = event.target.getAttribute('id');
+    let forLabel = todo.querySelector('[for=' + idInput + ']');
+    let valueLabel = forLabel.innerHTML;
 
-	todoList.forEach(function(item){
-		if (item.todo === valueLabel) {
-			item.checked =! item.checked;
-			localStorage.setItem('todo', JSON.stringify(todoList));
-		}
-	});
+    todoList.forEach(function(item) {
+        if (item.todo === valueLabel) {
+            item.checked = !item.checked;
+            localStorage.setItem('todo', JSON.stringify(todoList));
+        }
+    });
 });
 
 
@@ -133,20 +133,18 @@ todo.addEventListener('contextmenu', function(e){
 })
 
 
-function displayMenu(e){
-	e.preventDefault(); 
-	menu.style.top = `${e.clientY - 20}px`;
-	menu.style.left = `${e.clientX - 20}px`;
-	menu.classList.remove('off');
+function displayMenu(e) {
+    e.preventDefault();
+    menu.style.top = `${e.clientY - 20}px`;
+    menu.style.left = `${e.clientX - 20}px`;
+    menu.classList.remove('off');
 }
 
-function hideMenu(e){
-	menu.classList.add('off');
-	menu.style.top = '-200%';
-	menu.style.left = '-200%';
+function hideMenu(e) {
+    menu.classList.add('off');
+    menu.style.top = '-200%';
+    menu.style.left = '-200%';
 }
-
-
 
 const highlightNote = (note, pos, length) => {
     return note.slice(0, pos) + '<mark>' +
@@ -163,7 +161,8 @@ document.querySelector('#input').oninput = function() {
             if (el.innerText.includes(searchData)) {
                 let str = el.innerText;
                 //console.log(el);
-                el.innerHTML = highlightNote(str, el.innerText.search(searchData), searchData.length);
+                const position = el.innerText.search(searchData);
+                el.innerHTML = highlightNote(str, position, searchData.length);
             } else {
                 el.innerHTML = el.innerText;
             }
