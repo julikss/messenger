@@ -1,6 +1,7 @@
 let addNote = document.querySelector('.note'),
     addButton = document.querySelector('.add'),
     todo = document.querySelector('.todo'),
+	menu = document.querySelector('.menu'),
     del = document.getElementById('delete'),
     clear = document.getElementById('clear'),
     mark = document.getElementById('mark'),
@@ -8,25 +9,46 @@ let addNote = document.querySelector('.note'),
     edit = document.getElementById('edit');
 
 let todoList = [];
-let menu = null;
 
-document.addEventListener('DOMContentLoaded', function(){
-	 
-	menu = document.querySelector('.menu');
+menu.classList.add('off');
+menu.addEventListener('mouseleave', hideMenu);
+
+function displayMenu(e) {
+	e.preventDefault();
+	menu.style.top = `${e.clientY - 20}px`;
+	menu.style.left = `${e.clientX - 20}px`;
+	menu.classList.remove('off');
+}
+	
+function hideMenu(e) {
 	menu.classList.add('off');
-	menu.addEventListener('mouseleave', hideMenu);
-
-});
-
+	menu.style.top = '-200%';
+	menu.style.left = '-200%';
+}
+	
 
 if (localStorage.getItem('todo')) {
     todoList = JSON.parse(localStorage.getItem('todo'));
     displayMessage();
 }
 
-addButton.addEventListener('click', inputNote);
+function displayMessage() {
+	let displayMessage = '';
+	let index;
+	if(todoList.length === 0) todo.innerHTML = '';
+	for(let item of todoList) {
+		index = todoList.indexOf(item);
+		displayMessage += `
+			<li>
+			<input type='checkbox' id='item_${index}' ${item.checked ? 'checked' : ''}>
+			<label for='item_${index}' class='${item.important ? 'important' : ''}'>${item.todo}</label>
+			</li>
+		`;
+		todo.innerHTML = displayMessage;
+	}
+}
 
-function inputNote(){
+function inputNote() {
 	if(!addNote.value) return;
 	let newTodo = {
 		todo: addNote.value,
@@ -34,73 +56,63 @@ function inputNote(){
 		important: false
 	};
 	todoList.push(newTodo);
-	
 	displayMessage();
 	localStorage.setItem('todo', JSON.stringify(todoList));
 	addNote.value = '';
 }
 
-function displayMessage(){
-	let displayMessage = '';
-	if(todoList.length === 0) todo.innerHTML = '';
+addButton.addEventListener('click', inputNote);
 
-	todoList.forEach(function(item, i){
-		displayMessage += `
-			<li>
-			<input type='checkbox' id='item_${i}' ${item.checked ? 'checked' : ''}>
-			<label for='item_${i}' class='${item.important ? 'important' : ''}'>${item.todo}</label>
-			</li>
-			`;
-			todo.innerHTML = displayMessage;
-	});
-}
 
-todo.addEventListener('change', function(event) {
-    let idInput = event.target.getAttribute('id');
-    let forLabel = todo.querySelector('[for=' + idInput + ']');
-    let valueLabel = forLabel.innerHTML;
+todo.addEventListener('change', (e) => {
+    let idInput = e.target.getAttribute('id');
+    let label = todo.querySelector('[for=' + idInput + ']');
+    let valueOfLabel = label.innerHTML;
 
-    todoList.forEach(function(item) {
-        if (item.todo === valueLabel) {
+    for(let item of todoList){
+        if (item.todo === valueOfLabel) {
             item.checked = !item.checked;
             localStorage.setItem('todo', JSON.stringify(todoList));
         }
-    });
+    }
 });
 
-
-todo.addEventListener('contextmenu', function(e){
-
+//contextmenu
+todo.addEventListener('contextmenu', (e) => {
 	e.preventDefault();
 	todo.addEventListener('contextmenu', displayMenu);
 	let text = e.target.innerHTML;
 
 	//delete note
-	del.addEventListener('click', function(e){
+	del.addEventListener('click', () => {
 		hideMenu();
-		todoList.forEach(function(item, i){
-		if(item.todo === text) {
-			todoList.splice(i, 1);
-			displayMessage();
-			localStorage.setItem('todo', JSON.stringify(todoList));
+		let index;
+		for(let item of todoList){
+			index = todoList.indexOf(item);
+			if(item.todo === text) {
+				todoList.splice(index, 1);
+				displayMessage();
+				localStorage.setItem('todo', JSON.stringify(todoList));
+			}
 		}
-		})
 	});
 
 	//clear note
-	clear.addEventListener('click', function(e) {
+	clear.addEventListener('click', (e) => {
 		hideMenu();
-		for(const item of todoList) {
-			todoList.splice(todoList.indexOf(item));
+		let index;
+		for(let item of todoList) {
+			index = todoList.indexOf(item);
+			todoList.splice(index);
 			displayMessage();
 			localStorage.setItem('todo', JSON.stringify(todoList));
 		}
 	});
 
 	//mark as important
-	mark.addEventListener('click', function(e){
+	mark.addEventListener('click', (e) => {
 		hideMenu();
-		for(const item of todoList){
+		for(let item of todoList){
 			if(item.todo === text) {
 				item.important =! item.important;
 				displayMessage();
@@ -110,17 +122,17 @@ todo.addEventListener('contextmenu', function(e){
 	});
 
 	//copy text 
-	copy.addEventListener('click',  function(){
+	copy.addEventListener('click', () => {
 		hideMenu();
 		navigator.clipboard.writeText(text);
 	});
 
 	//edit text 
-	edit.addEventListener('click', () =>{
-		hideMenu();
-		todoList.forEach(function(item, i){
+	edit.addEventListener('click', () => {
+		hideMenu(); 
+		for(let item of todoList){
 			if(item.todo === text) {
-				addButton.addEventListener('click', () =>{
+				addButton.addEventListener('click', () => {
 					if(!addNote.value) return;
 					item.todo = addNote.value;
 					displayMessage();
@@ -128,24 +140,13 @@ todo.addEventListener('contextmenu', function(e){
 					addNote.value = '';
 				});
 			}
-		})
-	})
+		}
+	});
+
 })
 
 
-function displayMenu(e) {
-    e.preventDefault();
-    menu.style.top = `${e.clientY - 20}px`;
-    menu.style.left = `${e.clientX - 20}px`;
-    menu.classList.remove('off');
-}
-
-function hideMenu(e) {
-    menu.classList.add('off');
-    menu.style.top = '-200%';
-    menu.style.left = '-200%';
-}
-
+//functions for searching
 const highlightNote = (note, pos, length) => {
     return note.slice(0, pos) + '<mark>' +
         note.slice(pos, pos + length) +
@@ -173,5 +174,4 @@ document.querySelector('#input').oninput = function() {
             el.innerHTML = el.innerText;
         }
     };
-
 };
