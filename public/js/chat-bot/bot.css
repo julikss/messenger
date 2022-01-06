@@ -10,8 +10,8 @@ button {
     bottom: 50px;
     background: #ea5c8c;
     color: white;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     opacity: 0.8;
     transition: opacity 0.3s;
@@ -45,7 +45,7 @@ button {
 
 #income {
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: flex-end;
 }
 
@@ -53,8 +53,9 @@ button {
     background-color: #ea5c8c;
     color: white;
     padding: 0.5rem;
-    border-radius: 25px;
+    border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    margin-top: 5px;
 }
 
 #income-m .reply {
@@ -108,7 +109,7 @@ input[type="text"] {
     margin: 0.75rem;
     padding: 0.5rem;
     background-color: #ddd;
-    border-radius: 25px;
+    border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     word-break: break-all;
 }

@@ -9,9 +9,33 @@ const openChat = document.querySelector('.chat-btn');
 const chatWindow = document.querySelector('.chat-area');
 const emoji = document.querySelector('#emoji-btn');
 const picker = new EmojiButton();
+const commands = [
+  ['Hello', 'Hi'],
+  ['Help', 'About us, Use'],
+  ['About us', 'ULUMANANA'],
+  ['Use', 'Chat-room for real-time chatting'],
+  ['Donate', '544550005444-donation card']
+];
+let isOpen = false;
+
+const automaticOpen = () => {
+  setTimeout(() => {
+    if (isOpen === false) {
+      chat.style.display = 'block';
+      isOpen = true;
+    }
+  }, 5000);
+};
 
 openChat.addEventListener('click', () => {
-  chat.classList.toggle('show');
+  if (isOpen === false) {
+    chat.style.display = 'block';
+    isOpen = true;
+  } else {
+    chat.style.display = 'none';
+    isOpen = false;
+  }
+
 });
 
 //sending messages
@@ -19,20 +43,24 @@ openChat.addEventListener('click', () => {
 const sendMessage = () => {
   const mesgText = inputText.value;
 
-  const newMesg = `<div class="out-msg">
-  <span class="my-msg">${mesgText}</span>
-  </div>`;
-
-  chatWindow.insertAdjacentHTML('beforeend', newMesg);
-  inputText.value = '';
-
-  if (mesgText === 'Hello') {
-    const reply = `<div class="income-msg">
-      <span id="income-m" class="reply">${mesgText}</span>
+  if (mesgText !== '') {
+    const newMesg = `<div class="out-msg">
+      <span class="my-msg">${mesgText}</span>
       </div>`;
-    setTimeout(() => {
-      chatWindow.insertAdjacentHTML('beforeend', reply);
-    }, 600);
+
+    chatWindow.insertAdjacentHTML('beforeend', newMesg);
+    inputText.value = '';
+  }
+
+  for (const el of commands) {
+    if (mesgText === el[0]) {
+      const reply = `<div class="income-msg">
+      <span id="income-m" class="reply">${el[1]}</span>
+      </div>`;
+      setTimeout(() => {
+        chatWindow.insertAdjacentHTML('beforeend', reply);
+      }, 600);
+    }
   }
 };
 
@@ -47,3 +75,5 @@ window.addEventListener('DOMContentLoaded', () => {
     picker.togglePicker(emoji);
   });
 });
+
+automaticOpen();
