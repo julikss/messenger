@@ -128,7 +128,7 @@ todo.addEventListener('contextmenu', e => {
     hideMenu();
     navigator.clipboard.writeText(text);
   });
- 
+
   //edit text
   edit.addEventListener('click', () => {
     hideMenu();

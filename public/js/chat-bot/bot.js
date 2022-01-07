@@ -9,12 +9,31 @@ const openChat = document.querySelector('.chat-btn');
 const chatWindow = document.querySelector('.chat-area');
 const emoji = document.querySelector('#emoji-btn');
 const picker = new EmojiButton();
+
+const getDate = () => {
+  const date = new Date();
+  if (date.getMonth() + 1 > 9) {
+    return `${date.getDate()}` + '.' + `${date.getMonth() + 1}`;
+  } else {
+    return `${date.getDate()}` + '.' + '0' + `${date.getMonth() + 1}`;
+  }
+};
+
+const getTime = () => {
+
+};
+
 const commands = [
   ['Hello', 'Hi'],
-  ['Help', 'About us, Use'],
+  ['Help', 'About us, Use, Possibilities, More'],
   ['About us', 'ULUMANANA'],
   ['Use', 'Chat-room for real-time chatting'],
-  ['Donate', '544550005444-donation card']
+  ['Donate', '544550005444-donation card'],
+  ['Possibilities', 'Check Notes'],
+  //['Chat info', `room: ${room}, your name:${username}`],
+  ['More', 'Date, Time'],
+  ['Date', `${getDate()}`],
+  ['Time', `${getTime()}`]
 ];
 let isOpen = false;
 
