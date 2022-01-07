@@ -1,44 +1,26 @@
 <!doctype html>
-<html lang="ru">
+<html lang="eng">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/chat.css">
-    <title>Document</title>
+    <link rel="icon" href="https://img.icons8.com/nolan/64/u.png"/>
+    <title>My Notes</title>
 </head>
 
 <body>
-
-
     <div id="contacts">
-        <h1>Контакты</h1>
+        <h1>Menu Bar</h1>
         <form>
-            <input type="search" id="input" name="search_contacts" placeholder="Поиск" class="search">
+            <input type="search" id="input" name="search_contacts" placeholder="Поиск" class="search" autocomplete="off">
             <button type="submit" class="search_button">
         </form>
-        <div class="contact1"><a href="chat.html"><p class="Notes" id="Notes">NOTES</p></a></div>
+        <div class="contact1"><a href="chat.html"><p class="Notes" id="Notes"> CHATROOM</p></a></div>
         <div class="profile_photo_contact1">
-            <img src="./images/ok_emoji.png" class="profile_photos_contact1">
+            <img src="https://img.icons8.com/nolan/64/chat.png" class="profile_photos_contact1">
         </div>
-        <div class="contact2-5" id="c_1">
-            <p class="ulumanana">ULUMANANA</p>
-        </div>
-        <div class="profile_photo_contact" id="profile_photo_contact2"></div>
-        <div class="contact2-5" id="c_2">
-            <p class="ulumanana">ULUMANANA</p>
-        </div>
-        <div class="profile_photo_contact" id="profile_photo_contact3"></div>
-        
-        <div class="contact2-5" id="c_3">
-            <p class="ulumanana">ULUMANANA</p>
-        </div>
-        <div class="profile_photo_contact" id="profile_photo_contact4"></div>
-        <div class="contact2-5" id="c_4">
-            <p class="ulumanana">ULUMANANA</p>
-        </div>
-        <div class="profile_photo_contact" id="profile_photo_contact5"></div>
     </div>
     <div class="chat">
         <div>
@@ -51,7 +33,7 @@
                 <li class="menu-item" id="clear">Clear</li>
             </ul>
             <div class="wrapper">
-                <ul class="todo"></ul>
+                <ul class="todo" contenteditable="false"></ul>
             </div>
             <input type="text" placeholder="Введите заметку..." class="note" id="msg">
             <button class="add"></button>

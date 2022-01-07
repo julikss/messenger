@@ -92,7 +92,7 @@ form {
     height: 50px;
     width: 50px;
     border-radius: 100px;
-    background-color: #8c52ff;
+    background-color: #f1cbe2;
 }
 
 .profile_photo_contact {
@@ -403,7 +403,9 @@ input[type=checkbox]:checked+label:before {
     position: fixed;
     z-index: 100;
 }
-
+#menu-chat {
+    height: 5rem;
+}
 .menu.off {
     top: -200%;
     left: -200%;

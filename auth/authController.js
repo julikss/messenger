@@ -86,12 +86,12 @@ const deleteUser = async (req, res) => {
     res.status(400).json({ message: 'Error found' });
   }
 };
-const accountUser = async(req, res) => {
+const accountUser = async (req, res) => {
 
   try {
     const { username, password } = req.params; //destruction
     const accountU = await User.findOne({ username });
-   res.json({username});
+    res.json({ username });
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: 'Error found' });

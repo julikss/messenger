@@ -34,6 +34,7 @@ if (localStorage.getItem('todo')) {
   displayMessage();
 }
 
+
 function displayMessage() {
   let displayMessage = '';
   let index;
@@ -128,20 +129,16 @@ todo.addEventListener('contextmenu', e => {
     hideMenu();
     navigator.clipboard.writeText(text);
   });
- 
+
   //edit text
   edit.addEventListener('click', () => {
+    let note = e.target;
     hideMenu();
     for (const item of todoList) {
       if (item.todo === text) {
-        addButton.addEventListener('click', () => {
-          if (!addNote.value) return;
-          console.log(addNote.value);
-          item.todo = addNote.value;
-          displayMessage();
-          localStorage.setItem('todo', JSON.stringify(todoList));
-          addNote.value = '';
-        }, true);
+        note.setAttribute("contenteditable", "true");
+        todo.item = note.innerText;
+        localStorage.setItem('todo', JSON.stringify(todoList));
       }
     }
   });
