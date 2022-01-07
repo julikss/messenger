@@ -187,12 +187,14 @@ a {
 }
 
 .message1 {
-    height: 60px;
-    width: 330px;
+    /*height: 60px;
+    width: 330px;*/
     background-color: #ea5c8c;
     border-radius: 8px;
     margin-top: 40px;
-    margin-left: 350px;
+    margin-left: 380px;
+    max-width: 350px;
+    padding: 5px;
 }
 
 #msg {
@@ -217,15 +219,15 @@ a {
 }
 
 .stikers {
-    position: relative;
+    position: fixed;
     width: 30px;
     height: 30px;
     background: #1d2437;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
     border: none;
-    left: 680px;
-    top: 450px;
+    left: 1150px;
+    top: 750px;
 }
 
 .stikers:before {
@@ -236,15 +238,15 @@ a {
 }
 
 .chat .send {
-    position: absolute;
+    position: fixed;
     width: 30px;
     height: 30px;
     background: #1d2437;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
     border: none;
-    left: 630px;
-    top: 450px;
+    left: 1105px;
+    top: 750px;
 }
 
 .chat .send:before {
@@ -382,6 +384,11 @@ input[type=checkbox]:checked+label:before {
     color: #a6a6a6;
 }
 
+.text {
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
 .menu {
     width: 7.5rem;
     height: 7.5rem;
@@ -421,9 +428,9 @@ input[type=checkbox]:checked+label:before {
 }
 
 #leave_room {
-    position: absolute;
+    position: fixed;
     bottom: 180px;
-    right: 365px;
+    right: 363px;
     background-color: #1d2437;
     height: 50px;
     width: 250px;
@@ -431,4 +438,14 @@ input[type=checkbox]:checked+label:before {
     border-radius: 4pxs;
     color: azure;
     font-size: large;
+}
+
+.meta {
+    font-size: X-small;
+    margin-left: 250px;
+}
+
+.output_message {
+    overflow-y: scroll;
+    height: 500px;
 }
