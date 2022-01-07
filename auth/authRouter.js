@@ -16,5 +16,6 @@ router.post('/registration', jsonParser,
 router.post('/api/login', jsonParser, controller.login);
 router.get('/users', controller.getUsers);
 router.delete('/delete/:username', controller.deleteUser);
+router.get('/account/:username', controller.accountUser);
 
 module.exports = router;
