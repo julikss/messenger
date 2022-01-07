@@ -5,6 +5,13 @@ const chatMessages = document.querySelector('.chat');
 const userList = document.getElementById('users');
 const roomName = document.getElementById('room-name');
 
+const menu = document.querySelector('.menu');
+const del = document.getElementById('delete');
+const clear = document.getElementById('clear');
+const copy = document.getElementById('copy');
+const edit = document.getElementById('edit');
+const report = document.getElementById('report');
+
 // eslint-disable-next-line no-undef
 const socket = io('ws://localhost:3000');
 const { username, room } = Qs.parse(location.search, {
@@ -54,6 +61,8 @@ function outputMessage(message) {
      ${message.text}
     </p>`;
     document.querySelector('.output_message').appendChild(div);
+
+    //localStorage.setItem('todo', JSON.stringify(todoList));
 }
 
 // Add room name to DOM
@@ -79,3 +88,78 @@ document.getElementById('leave_room').addEventListener('click', () => {
         window.location = '../login.html';
     } else {}
 });
+
+
+
+menu.classList.add('off');
+menu.addEventListener('mouseleave', hideMenu);
+
+function displayMenu(e) {
+  e.preventDefault();
+  menu.style.top = `${e.clientY - 20}px`;
+  menu.style.left = `${e.clientX - 20}px`;
+  menu.classList.remove('off');
+}
+
+function hideMenu() {
+  menu.classList.add('off');
+  menu.style.top = '-200%';
+  menu.style.left = '-200%';
+}
+
+//contextmenu
+chatMessages.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    chatMessages.addEventListener('contextmenu', displayMenu);
+    const text = e.target.innerHTML;
+  console.log('text', text);
+    //delete message
+    del.addEventListener('click', () => {
+      hideMenu();
+      let index;
+      for (const item of todoList) {
+        index = todoList.indexOf(item);
+        if (item.todo === text) {
+          todoList.splice(index, 1);
+          displayMessage();
+          localStorage.setItem('todo', JSON.stringify(todoList));
+        }
+      }
+    });
+  /*
+    //clear note
+    clear.addEventListener('click', () => {
+      hideMenu();
+      let index;
+      for (const item of todoList) {
+        index = todoList.indexOf(item);
+        todoList.splice(index);
+        displayMessage();
+        localStorage.setItem('todo', JSON.stringify(todoList));
+      }
+    });
+  
+    //mark as important
+    mark.addEventListener('click', () => {
+      hideMenu();
+      for (const item of todoList) {
+        if (item.todo === text) {
+          item.important = !item.important;
+          displayMessage();
+          localStorage.setItem('todo', JSON.stringify(todoList));
+        }
+      }
+    });
+  
+    //copy text
+    copy.addEventListener('click', () => {
+      hideMenu();
+      navigator.clipboard.writeText(text);
+    });
+  
+    //edit text
+    edit.addEventListener('click', () => {
+      inputChange(text);
+    });
+  */
+  });
