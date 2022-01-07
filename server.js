@@ -50,7 +50,7 @@ io.on('connection', socket => {
     socket.join(room);
 
     // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Welcome to Messanger!'));
+    socket.emit('message', formatMessage(botName, 'Welcome to Messenger!'));
 
     // Broadcast when a user connects
     socket.broadcast
