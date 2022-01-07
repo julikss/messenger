@@ -132,11 +132,11 @@ todo.addEventListener('contextmenu', e => {
 
   //edit text
   edit.addEventListener('click', () => {
-    let note = e.target;
+    const note = e.target;
     hideMenu();
     for (const item of todoList) {
       if (item.todo === text) {
-        note.setAttribute("contenteditable", "true");
+        note.setAttribute('contenteditable', 'true');
         todo.item = note.innerText;
         localStorage.setItem('todo', JSON.stringify(todoList));
       }
