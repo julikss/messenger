@@ -64,11 +64,11 @@ function outputRoomName(room) {
 
 function outputUsers(users) {
     userList.innerHTML = '';
-    users.forEach((user) => {
+    users.forEach((users) => {
         const div = document.createElement('div');
         div.innerText = ``;
         const p = document.createElement('p');
-        p.innerText = `${user.username}`;
+        p.innerText = `${users.username}`;
         div.appendChild(p);
         userList.appendChild(div);
     });
