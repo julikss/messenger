@@ -15,81 +15,80 @@ const report = document.getElementById('report');
 // eslint-disable-next-line no-undef
 const socket = io('ws://localhost:3000');
 const { username, room } = Qs.parse(location.search, {
-    ignoreQueryPrefix: true,
+  ignoreQueryPrefix: true,
 });
 
 console.log(Qs.parse(location.search, {
-    ignoreQueryPrefix: true,
+  ignoreQueryPrefix: true,
 }));
 
 socket.emit('joinRoom', { room });
 
 socket.on('roomUsers', ({ room, users }) => {
-    outputRoomName(room);
-    outputUsers(users);
+  outputRoomName(room);
+  outputUsers(users);
 });
 
 socket.on('message', message => {
-    console.log(message);
-    outputMessage(message);
+  console.log(message);
+  outputMessage(message);
+  //chatMessage.scrollTop = chatMessage.scrollHeight;
 });
 
 chatForm.addEventListener('submit', send => {
-    send.preventDefault();
+  send.preventDefault();
 
-    let msg = send.target.elements.msg.value;
-    msg = msg.trim();
+  let msg = send.target.elements.msg.value;
+  msg = msg.trim();
 
-    if (!msg) {
-        return false;
-    }
+  if (!msg) {
+    return false;
+  }
 
-    socket.emit('chatMessage', msg);
+  socket.emit('chatMessage', msg);
 
-    send.target.elements.msg.value = '';
-    send.target.elements.msg.focus();
-    console.log(msg);
+  send.target.elements.msg.value = '';
+  send.target.elements.msg.focus();
+  console.log(msg);
 });
 
 
 // Output message to DOM
 function outputMessage(message) {
-    const div = document.createElement('div');
-    div.classList.add('message1');
-    div.innerHTML = `<p class="meta">${username}<span>${message.time}</span></p>   
-    <p class="text">
-     ${message.text}
-    </p>`;
-    document.querySelector('.output_message').appendChild(div);
-
-    //localStorage.setItem('todo', JSON.stringify(todoList));
+  const div = document.createElement('div');
+  div.classList.add('message1');
+  div.innerHTML = ` <p class="text">
+    ${message.text}
+   </p>
+   <p class="meta">${username}<span>&#160;${message.time}</span></p>`;
+  document.querySelector('.output_message').appendChild(div);
 }
 
 // Add room name to DOM
 function outputRoomName(room) {
-    roomName.innerText = room;
+  roomName.innerText = room;
 }
 
 function outputUsers(users) {
-    userList.innerHTML = '';
-    users.forEach((user) => {
-        const div = document.createElement('div');
-        div.innerText = ``;
-        const p = document.createElement('p');
-        p.innerText = `${user.username}`;
-        div.appendChild(p);
-        userList.appendChild(div);
-    });
+  userList.innerHTML = '';
+  users.forEach(user => {
+    const div = document.createElement('div');
+    div.innerText = '';
+    const p = document.createElement('p');
+    p.innerText = `${user.username}`;
+    div.appendChild(p);
+    userList.appendChild(div);
+  });
 }
 
 document.getElementById('leave_room').addEventListener('click', () => {
     const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
     if (leaveRoom) {
-        window.location = '../login.html';
+      window.location = '../login.html';
     } else {}
-});
+  });
 
-
+  
 
 menu.classList.add('off');
 menu.addEventListener('mouseleave', hideMenu);
@@ -108,6 +107,8 @@ function hideMenu() {
 }
 
 //contextmenu
+
+/*
 chatMessages.addEventListener('contextmenu', e => {
     e.preventDefault();
     chatMessages.addEventListener('contextmenu', displayMenu);
@@ -126,7 +127,6 @@ chatMessages.addEventListener('contextmenu', e => {
         }
       }
     });
-  /*
     //clear note
     clear.addEventListener('click', () => {
       hideMenu();
@@ -161,5 +161,7 @@ chatMessages.addEventListener('contextmenu', e => {
     edit.addEventListener('click', () => {
       inputChange(text);
     });
-  */
+
   });
+
+  */

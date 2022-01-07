@@ -34,6 +34,7 @@ if (localStorage.getItem('todo')) {
   displayMessage();
 }
 
+
 function displayMessage() {
   let displayMessage = '';
   let index;
