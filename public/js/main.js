@@ -37,10 +37,11 @@ chatForm.addEventListener('submit', send => {
         return false;
     }
 
-    socket.emit('MessageInChat', msg);
+    socket.emit('chatMessage', msg);
 
     send.target.elements.msg.value = '';
     send.target.elements.msg.focus();
+    console.log(msg);
 });
 
 
@@ -48,12 +49,11 @@ chatForm.addEventListener('submit', send => {
 function outputMessage(message) {
     const div = document.createElement('div');
     div.classList.add('message1');
-    div.innerHTML = ` `;
-    const p = document.createElement('p');
-    p.classList.add('text');
-    p.innerText = message.text;
-    div.appendChild(p);
-    document.querySelector('.chat').appendChild(div);
+    div.innerHTML = `<p class="meta">${username}<span>${message.time}</span></p>   
+    <p class="text">
+     ${message.text}
+    </p>`;
+    document.querySelector('.output_message').appendChild(div);
 }
 
 // Add room name to DOM
@@ -67,7 +67,7 @@ function outputUsers(users) {
         const div = document.createElement('div');
         div.innerText = ``;
         const p = document.createElement('p');
-        p.innerText = user.username;
+        p.innerText = `${user.username}`;
         div.appendChild(p);
         userList.appendChild(div);
     });

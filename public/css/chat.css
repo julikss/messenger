@@ -211,13 +211,13 @@ a {
 }
 
 .message {
-    position: absolute;
+    position: relative;
     left: 15px;
     top: 440px;
 }
 
 .stikers {
-    position: absolute;
+    position: relative;
     width: 30px;
     height: 30px;
     background: #1d2437;
