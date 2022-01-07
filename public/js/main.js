@@ -89,10 +89,10 @@ document.getElementById('leave_room').addEventListener('click', () => {
 });
 
 document.getElementById('Notes').addEventListener('click', () => {
-    const { room } = confirm('Are you sure you want to leave the chatroom?');
-    if (room) {
-        window.location = Qs.parse(location.search);
-    } else {}
+  const { room } = confirm('Are you sure you want to leave the chatroom?');
+  if (room) {
+    window.location = Qs.parse(location.search);
+  } else {}
 });
 
 
