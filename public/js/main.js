@@ -88,6 +88,15 @@ document.getElementById('leave_room').addEventListener('click', () => {
     } else {}
 });
 
+document.getElementById('Notes').addEventListener('click', () => {
+    const { room } = confirm('Are you sure you want to leave the chatroom?');
+    if (room) {
+        window.location = Qs.parse(location.search);
+    } else {}
+});
+
+
+
 
 
 menu.classList.add('off');
