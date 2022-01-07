@@ -108,13 +108,14 @@ function hideMenu() {
 
 //contextmenu
 
-/*
+
 chatMessages.addEventListener('contextmenu', e => {
     e.preventDefault();
     chatMessages.addEventListener('contextmenu', displayMenu);
     const text = e.target.innerHTML;
   console.log('text', text);
     //delete message
+    /*
     del.addEventListener('click', () => {
       hideMenu();
       let index;
@@ -160,8 +161,8 @@ chatMessages.addEventListener('contextmenu', e => {
     //edit text
     edit.addEventListener('click', () => {
       inputChange(text);
-    });
+    });  */
 
   });
 
-  */
+
