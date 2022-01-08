@@ -9,33 +9,56 @@ const openChat = document.querySelector('.chat-btn');
 const chatWindow = document.querySelector('.chat-area');
 const emoji = document.querySelector('#emoji-btn');
 const picker = new EmojiButton();
+const usernames = [];
 
 const getDate = () => {
   const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  let result;
+
   if (date.getMonth() + 1 > 9) {
-    return `${date.getDate()}` + '.' + `${date.getMonth() + 1}`;
+    result = day + '.' + month;
   } else {
-    return `${date.getDate()}` + '.' + '0' + `${date.getMonth() + 1}`;
+    result = day + '.0' + month;
   }
+
+  return result;
 };
 
 const getTime = () => {
+  const date = new Date();
+  const hour = date.getHours();
+  const minutes = date.getMinutes();
+  const result = hour + ':' + minutes;
 
+  return result;
 };
 
 const commands = [
   ['Hello', 'Hi'],
   ['Help', 'About us, Use, Possibilities, More'],
-  ['About us', 'ULUMANANA'],
+  ['About us', 'We are ULUMANANA corporation'],
   ['Use', 'Chat-room for real-time chatting'],
   ['Donate', '544550005444-donation card'],
   ['Possibilities', 'Check Notes'],
   //['Chat info', `room: ${room}, your name:${username}`],
-  ['More', 'Date, Time'],
+  ['More', 'Date, Time, Signed up'],
   ['Date', `${getDate()}`],
-  ['Time', `${getTime()}`]
+  ['Time', `${getTime()}`],
+  ['Signed up', `${usernames}`]
 ];
 let isOpen = false;
+
+const loggedUsers = async () => {
+  const result = await fetch('/auth/users')
+    .then(res => res.json());
+
+  for (const el of result) {
+    usernames.push(el.username);
+  }
+  commands[9][1] = `${usernames}`;
+};
 
 const automaticOpen = () => {
   setTimeout(() => {
@@ -96,3 +119,4 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 automaticOpen();
+loggedUsers();

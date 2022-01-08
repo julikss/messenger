@@ -179,6 +179,7 @@ a {
 }
 
 .forName {
+    position: fixed;
     height: 100px;
     width: 750px;
     background-color: #1d2437;
@@ -298,8 +299,9 @@ a {
     position: absolute;
     padding-left: 0;
     top: 250px;
-    overflow-y: scroll;
-    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 490px;
 }
 
 .todo li {
@@ -403,9 +405,11 @@ input[type=checkbox]:checked+label:before {
     position: fixed;
     z-index: 100;
 }
+
 #menu-chat {
     height: 5rem;
 }
+
 .menu.off {
     top: -200%;
     left: -200%;
@@ -451,10 +455,23 @@ input[type=checkbox]:checked+label:before {
 }
 
 .output_message {
-    overflow-y: scroll;
-    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 625px;
 }
 
 .text {
     word-break: break-all;
+}
+
+#room-name {
+    position: fixed;
+}
+
+#Todo_List {
+    position: fixed;
+}
+
+#block {
+    position: fixed;
 }

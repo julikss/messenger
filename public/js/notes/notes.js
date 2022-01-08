@@ -29,8 +29,12 @@ function displayNote() {
     index = todoList.indexOf(item);
     note += `
 			<li>
-			<input type='checkbox' id='item_${index}' ${item.checked ? 'checked' : ''}>
-			<label for='item_${index}' class='${item.important ? 'important' : ''}'>${item.todo}</label>
+			<input type='checkbox' id='item_${index}'
+       ${item.checked ? 'checked' : ''}>
+			<label for='item_${index}' 
+      class='${item.important ? 'important' : ''}'>
+      ${item.todo}
+      </label>
 			</li>
 		`;
     todo.innerHTML = note;
@@ -140,11 +144,11 @@ todo.addEventListener('contextmenu', e => {
 
   //edit text
   edit.addEventListener('click', () => {
-    let note = e.target;
+    const note = e.target;
     hideMenu();
     for (const item of todoList) {
       if (item.todo === text) {
-        note.setAttribute("contenteditable", "true");
+        note.setAttribute('contenteditable', 'true');
         todo.item = note.innerText;
         saveNote();
       }
