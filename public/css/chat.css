@@ -187,8 +187,6 @@ a {
 }
 
 .message1 {
-    /*height: 60px;
-    width: 330px;*/
     background-color: #ea5c8c;
     border-radius: 8px;
     margin-top: 40px;
@@ -300,11 +298,14 @@ a {
     position: absolute;
     padding-left: 0;
     top: 250px;
+    overflow-y: scroll;
+    height: 500px;
 }
 
 .todo li {
     padding: 10px;
     list-style-type: none;
+    color: azure;
 }
 
 .todo li:not(:last-child) {
@@ -387,6 +388,7 @@ input[type=checkbox]:checked+label:before {
 .text {
     margin-left: 5px;
     margin-top: 10px;
+    color: #1d2437;
 }
 
 .menu {
@@ -443,11 +445,16 @@ input[type=checkbox]:checked+label:before {
 }
 
 .meta {
+    color: #30333b;
     font-size: X-small;
-    margin-left: 250px;
+    text-align: right;
 }
 
 .output_message {
     overflow-y: scroll;
     height: 500px;
+}
+
+.text {
+    word-break: break-all;
 }
