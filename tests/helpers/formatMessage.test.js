@@ -2,8 +2,8 @@
 
 const formatMessage = require('../../helpers/formatMessage');
 
-describe('formatMessage testing', ()=>{
-  it('returns object with proper shape', ()=>{
+describe('formatMessage testing', () => {
+  it('returns object with proper shape', () => {
     const username = 'Liubochka bubochka';
     const text = 'hee)';
     const actual = formatMessage(username, text);

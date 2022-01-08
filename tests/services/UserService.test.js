@@ -2,8 +2,8 @@
 
 const UserService = require('../../services/UserService');
 
-describe('addUser method testing', ()=>{
-  it('it pushes argument to array this.users', ()=>{
+describe('addUser method testing', () => {
+  it('it pushes argument to array this.users', () => {
     const service = new UserService();
     const user = {
       id: 1,
@@ -17,8 +17,8 @@ describe('addUser method testing', ()=>{
   });
 });
 
-describe('getUser method testing', ()=>{
-  it('it returns user if id exists', ()=>{
+describe('getUser method testing', () => {
+  it('it returns user if id exists', () => {
     const service = new UserService();
     const id = 1;
     const user = {
@@ -31,9 +31,9 @@ describe('getUser method testing', ()=>{
     const actual = service.getUser(id);
     expect(actual).toEqual(user);
   });
-  
 
-  it('it returns undefined if id does not exist', ()=>{
+
+  it('it returns undefined if id does not exist', () => {
     const service = new UserService();
     const id = 2;
     const user = {
@@ -48,8 +48,8 @@ describe('getUser method testing', ()=>{
   });
 });
 
-describe('removeUser method testing', ()=>{
-  it('it removes user if id exists', ()=>{
+describe('removeUser method testing', () => {
+  it('it removes user if id exists', () => {
     const service = new UserService();
     const user = {
       id: 1,
@@ -62,7 +62,7 @@ describe('removeUser method testing', ()=>{
     expect(service.users).toEqual([]);
   });
 
-  it('it returns user that was removed', ()=>{
+  it('it returns user that was removed', () => {
     const service = new UserService();
     const user = {
       id: 1,
@@ -75,7 +75,7 @@ describe('removeUser method testing', ()=>{
     expect(removed).toEqual(user);
   });
 
-  it('it returns undefined if id does not exist', ()=>{
+  it('it returns undefined if id does not exist', () => {
     const service = new UserService();
     const user = {
       id: 1,
@@ -89,8 +89,8 @@ describe('removeUser method testing', ()=>{
   });
 });
 
-describe('getRoomUsers method testing', ()=>{
-  it('it returns array of users if room exists', ()=>{
+describe('getRoomUsers method testing', () => {
+  it('it returns array of users if room exists', () => {
     const service = new UserService();
     const user = {
       id: 1,
@@ -104,7 +104,7 @@ describe('getRoomUsers method testing', ()=>{
     expect(roomUsers).toEqual(expected);
   });
 
-  it('it returns empty array if room does not exist', ()=>{
+  it('it returns empty array if room does not exist', () => {
     const service = new UserService();
     const user = {
       id: 1,
