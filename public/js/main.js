@@ -4,13 +4,11 @@ const chatForm = document.getElementById('chat_form');
 const chatMessages = document.querySelector('.chat');
 const userList = document.getElementById('users');
 const roomName = document.getElementById('room-name');
-
+const msgBlock = document.querySelector('.output_message');
 const menu = document.querySelector('.menu');
 const del = document.getElementById('delete');
 const clear = document.getElementById('clear');
 const copy = document.getElementById('copy');
-const edit = document.getElementById('edit');
-const report = document.getElementById('report');
 
 // eslint-disable-next-line no-undef
 const socket = io('ws://localhost:3000');
@@ -52,16 +50,15 @@ chatForm.addEventListener('submit', send => {
     console.log(msg);
 });
 
-
-// Output message to DOM
 function outputMessage(message) {
     const div = document.createElement('div');
     div.classList.add('message1');
-    div.innerHTML = ` <p class="text" id="text">
-    ${message.text}
-   </p>
-   <p class="meta">${username}<span>&#160;${message.time}</span></p>`;
-    document.querySelector('.output_message').appendChild(div);
+    div.innerHTML = ` <p class="text">${message.text}</p>
+                    <p class="meta">${username}<span>&#160;${message.time}</span></p>
+                    `;
+    const msg = msgBlock.appendChild(div);
+    createMenu(msg);
+
 }
 
 // Add room name to DOM
@@ -84,10 +81,12 @@ document.getElementById('leave_room').addEventListener('click', () => {
     } else {}
 });
 
-
-
-
-
+document.getElementById('Notes').addEventListener('click', () => {
+    const { room } = confirm('Are you sure you want to leave the chatroom?');
+    if (room) {
+        window.location = Qs.parse(location.search);
+    } else {}
+});
 
 
 menu.classList.add('off');
@@ -107,60 +106,32 @@ function hideMenu() {
 }
 
 //contextmenu
+function createMenu(el) {
+    el.addEventListener('contextmenu', displayMenu);
+    el.addEventListener('contextmenu', e => {
+        e.preventDefault();
 
+        const text = el.innerText;
+        const click = e.target;
+        console.log(click);
+        console.log(el);
 
-chatMessages.addEventListener('contextmenu', e => {
-    e.preventDefault();
-    chatMessages.addEventListener('contextmenu', displayMenu);
-    const text = e.target.innerHTML;
-    console.log('text', text);
-    //delete message
-    /*
-      del.addEventListener('click', () => {
-        hideMenu();
-        let index;
-        for (const item of todoList) {
-          index = todoList.indexOf(item);
-          if (item.todo === text) {
-            todoList.splice(index, 1);
-            displayMessage();
-            localStorage.setItem('todo', JSON.stringify(todoList));
-          }
-        }
-      });
-      //clear note
-      clear.addEventListener('click', () => {
-        hideMenu();
-        let index;
-        for (const item of todoList) {
-          index = todoList.indexOf(item);
-          todoList.splice(index);
-          displayMessage();
-          localStorage.setItem('todo', JSON.stringify(todoList));
-        }
-      });
+        //delete message
+        del.addEventListener('click', () => {
+            hideMenu();
+            el.parentNode.removeChild(el);
+        });
+        //clear note
+        clear.addEventListener('click', () => {
+            hideMenu();
+            msgBlock.parentNode.removeChild(msgBlock);
+        });
 
-      //mark as important
-      mark.addEventListener('click', () => {
-        hideMenu();
-        for (const item of todoList) {
-          if (item.todo === text) {
-            item.important = !item.important;
-            displayMessage();
-            localStorage.setItem('todo', JSON.stringify(todoList));
-          }
-        }
-      });
+        //copy text
+        copy.addEventListener('click', () => {
+            hideMenu();
+            navigator.clipboard.writeText(text);
+        });
 
-      //copy text
-      copy.addEventListener('click', () => {
-        hideMenu();
-        navigator.clipboard.writeText(text);
-      });
-
-      //edit text
-      edit.addEventListener('click', () => {
-        inputChange(text);
-      });  */
-
-});
+    });
+}

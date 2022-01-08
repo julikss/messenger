@@ -12,6 +12,70 @@ const addNote = document.querySelector('.note'),
 
 let todoList = [];
 
+function loadNotes() {
+    if (localStorage.getItem('todo')) {
+        todoList = JSON.parse(localStorage.getItem('todo'));
+        displayNote();
+    }
+}
+
+loadNotes();
+
+function displayNote() {
+    let note = '';
+    let index;
+    if (todoList.length === 0) todo.innerHTML = '';
+    for (const item of todoList) {
+        index = todoList.indexOf(item);
+        note += `
+			<li>
+			<input type='checkbox' id='item_${index}'
+       ${item.checked ? 'checked' : ''}>
+			<label for='item_${index}' 
+      class='${item.important ? 'important' : ''}'>
+      ${item.todo}
+      </label>
+			</li>
+		`;
+        todo.innerHTML = note;
+    }
+}
+
+function saveNote() {
+    localStorage.setItem('todo', JSON.stringify(todoList));
+}
+
+function inputNote() {
+    if (!addNote.value) return;
+    const newTodo = {
+        todo: addNote.value,
+        checked: false,
+        important: false
+    };
+    todoList.push(newTodo);
+    saveNote();
+    addNote.value = '';
+}
+
+addButton.addEventListener('click', inputNote);
+
+
+todo.addEventListener('change', e => {
+    const idInput = e.target.getAttribute('id');
+    const label = todo.querySelector('[for=' + idInput + ']');
+    const valueOfLabel = label.innerHTML;
+
+    for (const item of todoList) {
+        if (item.todo === valueOfLabel) {
+            item.checked = !item.checked;
+            saveNote();
+        }
+    }
+});
+
+
+
+//contextmenu
 menu.classList.add('off');
 menu.addEventListener('mouseleave', hideMenu);
 
@@ -29,58 +93,6 @@ function hideMenu() {
 }
 
 
-if (localStorage.getItem('todo')) {
-    todoList = JSON.parse(localStorage.getItem('todo'));
-    displayMessage();
-}
-
-
-function displayMessage() {
-    let displayMessage = '';
-    let index;
-    if (todoList.length === 0) todo.innerHTML = '';
-    for (const item of todoList) {
-        index = todoList.indexOf(item);
-        displayMessage += `
-			<li>
-			<input type='checkbox' id='item_${index}' ${item.checked ? 'checked' : ''}>
-			<label for='item_${index}' class='${item.important ? 'important' : ''}'>${item.todo}</label>
-			</li>
-		`;
-        todo.innerHTML = displayMessage;
-    }
-}
-
-function inputNote() {
-    if (!addNote.value) return;
-    const newTodo = {
-        todo: addNote.value,
-        checked: false,
-        important: false
-    };
-    todoList.push(newTodo);
-    displayMessage();
-    localStorage.setItem('todo', JSON.stringify(todoList));
-    addNote.value = '';
-}
-
-addButton.addEventListener('click', inputNote);
-
-
-todo.addEventListener('change', e => {
-    const idInput = e.target.getAttribute('id');
-    const label = todo.querySelector('[for=' + idInput + ']');
-    const valueOfLabel = label.innerHTML;
-
-    for (const item of todoList) {
-        if (item.todo === valueOfLabel) {
-            item.checked = !item.checked;
-            localStorage.setItem('todo', JSON.stringify(todoList));
-        }
-    }
-});
-
-//contextmenu
 todo.addEventListener('contextmenu', e => {
     e.preventDefault();
     todo.addEventListener('contextmenu', displayMenu);
@@ -94,8 +106,8 @@ todo.addEventListener('contextmenu', e => {
             index = todoList.indexOf(item);
             if (item.todo === text) {
                 todoList.splice(index, 1);
-                displayMessage();
-                localStorage.setItem('todo', JSON.stringify(todoList));
+                displayNote();
+                saveNote();
             }
         }
     });
@@ -107,8 +119,8 @@ todo.addEventListener('contextmenu', e => {
         for (const item of todoList) {
             index = todoList.indexOf(item);
             todoList.splice(index);
-            displayMessage();
-            localStorage.setItem('todo', JSON.stringify(todoList));
+            displayNote();
+            saveNote();
         }
     });
 
@@ -118,8 +130,8 @@ todo.addEventListener('contextmenu', e => {
         for (const item of todoList) {
             if (item.todo === text) {
                 item.important = !item.important;
-                displayMessage();
-                localStorage.setItem('todo', JSON.stringify(todoList));
+                displayNote();
+                saveNote();
             }
         }
     });
@@ -138,7 +150,7 @@ todo.addEventListener('contextmenu', e => {
             if (item.todo === text) {
                 note.setAttribute('contenteditable', 'true');
                 todo.item = note.innerText;
-                localStorage.setItem('todo', JSON.stringify(todoList));
+                saveNote();
             }
         }
     });
