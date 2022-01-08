@@ -77,53 +77,18 @@ form {
 }
 
 .contact1 {
-    position: absolute;
-    top: 70px;
-    left: -330px;
+    position: fixed;
+    top: 270px;
+    left: 70px;
     height: 70px;
-    width: 360px;
+    width: 350px;
     background-color: #1d2437;
 }
 
-.profile_photo_contact1 {
-    position: absolute;
-    top: 80px;
-    left: -320px;
-    height: 50px;
-    width: 50px;
-    border-radius: 100px;
-    background-color: #f1cbe2;
-}
-
-.profile_photo_contact {
-    height: 50px;
-    width: 50px;
-    border-radius: 100px;
-    position: absolute;
-    left: -320px;
-}
-
-#profile_photo_contact2 {
-    background-color: #00c2cb;
-    top: 200px;
-}
-
-#profile_photo_contact3 {
-    background-color: #ffdc5d;
-    top: 310px;
-}
-
-#profile_photo_contact4 {
-    background-color: #ff66c4;
-    top: 420px;
-}
-
-#profile_photo_contact5 {
-    background-color: #ff914d;
-    top: 530px;
-}
-
 .profile_photos_contact1 {
+    position: fixed;
+    top: 280px;
+    left: 80px;
     height: 50px;
     width: 50px;
     padding: 5px;
@@ -141,10 +106,11 @@ a {
 }
 
 .ulumanana {
+    position: fixed;
     color: white;
-    font-size: medium;
-    padding-top: 25px;
-    padding-right: 70px;
+    font-size: large;
+    bottom: 530px;
+    left: 140px;
 }
 
 .online {
@@ -155,10 +121,11 @@ a {
 }
 
 .contact2-5 {
-    position: absolute;
-    left: -330px;
+    position: fixed;
+    left: 70px;
+    top: 390px;
     height: 70px;
-    width: 360px;
+    width: 350px;
     background-color: #1d2437;
 }
 
@@ -190,7 +157,7 @@ a {
 .message1 {
     background-color: #ea5c8c;
     border-radius: 8px;
-    margin-top: 40px;
+    margin-top: 50px;
     margin-left: 380px;
     max-width: 350px;
     padding: 5px;
