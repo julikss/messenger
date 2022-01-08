@@ -13,19 +13,16 @@ const userPhoto = document.getElementById('photo_user');
 
 // eslint-disable-next-line no-undef
 const socket = io('ws://localhost:3000');
-const { username, room } = Qs.parse(location.search, {
-    ignoreQueryPrefix: true,
-});
+const { username, room } = Qs.parse(location.search);
 
-console.log(Qs.parse(location.search, {
-    ignoreQueryPrefix: true,
-}));
+console.log(Qs.parse(location.search));
 
-socket.emit('joinRoom', { room });
+socket.emit('joinRoom', { username, room });
 
-socket.on('roomUsers', ({ room, username }) => {
-    outputRoomName(room);
+socket.on('roomUsers', ({ username, room }) => {
+    console.log(username);
     outputUsers(username);
+    outputRoomName(room);
 });
 
 socket.on('message', message => {
@@ -69,6 +66,7 @@ function outputRoomName(room) {
 function outputUsers() {
     const div = document.createElement('div');
     div.classList.add('contact2-5');
+    console.log(username);
     div.innerHTML = ` <p class="ulumanana">${username}</p>`;
     userList.appendChild(div);
     const img = document.createElement('IMG');
