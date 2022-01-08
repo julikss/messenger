@@ -19,6 +19,33 @@ h1{
     padding-top: 20px;
     padding-left: 20px;
 }
+.settings {
+    position: absolute;
+    top: 70%;
+    left: 57%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: #1d2437;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
+
+}
+input[type="submit"] {
+    width: 50%;
+    height: 50px;
+    border: 1px solid;
+    background: #ea5c8c;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+input[type="submit"]:hover {
+    border-color: #2691d9;
+    transition: .5s;
+}
 .profile-pic-div{
     height: 200px;
     width: 200px;

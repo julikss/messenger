@@ -4,6 +4,22 @@ const imgDiv = document.querySelector('.profile-pic-div');
 const img = document.querySelector('#photo');
 const file = document.querySelector('#file');
 const uploadBtn = document.querySelector('#uploadBtn');
+const deleteButton = document.getElementById('delete');
+
+const deleteAccount = async event => {
+  event.preventDefault();
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username
+    })
+  };
+  const result = await fetch('/auth/account/:username')
+    .then(res => res.json());
+};
 
 imgDiv.addEventListener('mouseenter', () => {
   uploadBtn.style.display = 'block';
@@ -26,3 +42,7 @@ file.addEventListener('change', function() {
     reader.readAsDataURL(choosedFile);
   }
 });
+
+if (deleteButton) {
+  deleteButton.addEventListener('click', deleteAccount);
+}

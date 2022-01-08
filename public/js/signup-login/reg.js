@@ -30,12 +30,7 @@ const registerUser = async event => {
   } else {
     alert('Try again');
   }
-  /*  if (result.candidate = result.User.findOne({ username }) ) {
-           alert('user is already logged in');
-       }
-       else {
-            document.location = './chat.html';
-       }*/
+
 };
 
 if (form) {
