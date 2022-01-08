@@ -24,7 +24,7 @@ const registerUser = async event => {
     .then(res => res.json());
 
   if (message === 'Successfully') {
-    document.location = './chat.html';
+    document.location = './login.html';
   } else if (message === 'Username is already taken') {
     alert('user is already logged in');
   } else {

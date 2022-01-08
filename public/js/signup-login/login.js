@@ -22,7 +22,7 @@ const loginUser = async event => {
     .then(res => res.json());
 
   if (result.message === 'Correct Password') {
-    document.location = './rooms.html';
+    document.location = './chat.html';
   } else if (result.message === 'User not found') {
     alert('Wrong username!');
   } else {
