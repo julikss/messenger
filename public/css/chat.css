@@ -110,7 +110,7 @@ a {
     color: white;
     font-size: large;
     bottom: 530px;
-    left: 140px;
+    left: 150px;
 }
 
 .online {
@@ -441,4 +441,12 @@ input[type=checkbox]:checked+label:before {
 
 #block {
     position: fixed;
+}
+
+.photo_user {
+    position: fixed;
+    top: 400px;
+    left: 70px;
+    height: 50px;
+    width: 50px;
 }

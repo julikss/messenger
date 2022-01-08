@@ -9,6 +9,7 @@ const menu = document.querySelector('.menu');
 const del = document.getElementById('delete');
 const clear = document.getElementById('clear');
 const copy = document.getElementById('copy');
+const userPhoto = document.getElementById('photo_user');
 
 // eslint-disable-next-line no-undef
 const socket = io('ws://localhost:3000');
@@ -30,7 +31,6 @@ socket.on('roomUsers', ({ room, username }) => {
 socket.on('message', message => {
     console.log(message);
     outputMessage(message);
-    //chatMessage.scrollTop = chatMessage.scrollHeight;
 });
 
 chatForm.addEventListener('submit', send => {
@@ -69,22 +69,18 @@ function outputRoomName(room) {
 function outputUsers() {
     const div = document.createElement('div');
     div.classList.add('contact2-5');
-    div.innerHTML = ` <p class="ulumanana">${username}
-    <img src="https://img.icons8.com/nolan/64/homer-simpson.png" class="user_photo></p>`
+    div.innerHTML = ` <p class="ulumanana">${username}</p>`;
     userList.appendChild(div);
+    const img = document.createElement('IMG');
+    img.src = "https://img.icons8.com/nolan/64/homer-simpson.png";
+    img.classList.add('photo_user');
+    userPhoto.appendChild(img);
 };
 
 document.getElementById('leave_room').addEventListener('click', () => {
     const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
     if (leaveRoom) {
         window.location = '../login.html';
-    } else {}
-});
-
-document.getElementById('Notes').addEventListener('click', () => {
-    const { room } = confirm('Are you sure you want to leave the chatroom?');
-    if (room) {
-        window.location = Qs.parse(location.search);
     } else {}
 });
 
