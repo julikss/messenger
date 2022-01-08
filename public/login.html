@@ -8,36 +8,33 @@
     <link rel="icon" href="https://img.icons8.com/nolan/64/u.png"/>
 </head>
 
+
 <body>
-    <div class="center">
-        <h1>Log in</h1>
-        <form method="post">
-            <div class="txt_field">
-                <input type="text" id="username" required>
-                <span></span>
-                <label>Username</label>
+    <div class="rooms_box">
+        <h1 id="chatrooms_h1">Chatrooms</h1>
+        <hr>
+        <form action="chat.html">
+            <div class="form-control">
+                <label for="username" id="Username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter username..." required />
             </div>
             <div class="txt_field">
                 <input type="password" id="password" required>
                 <span></span>
                 <label>Password</label>
             </div>
-                <p id="chooseroom">Choose a chatroom</p>
-                <hr id="hr">
+            <div class="form-control">
+                <label id="chatrooms_h3">Rooms</label>
                 <select name="room" id="room">
-                    <option value="chatroom">Chatroom</option>
-                    <option value="zbochenki">Zbochenki</option>   
-                    <option value="frontenders">Frontenders</option>
-                    <option value="tiktokers">TikTokers</option>       
+                    <option value="ULUMANANA">ULUMANANA</option>
+                    <option value="Chatroom">Chatroom</option>          
         </select>
-            
-            <input type="submit" id="login" value="Join Chat">
-            <div class="signup_link">
-                Not a member? <a href="./index.html">Sign up</a>
             </div>
+            <button type="submit" class="join_chat">Join Chat</button>
         </form>
     </div>
     <script src="./js/signup-login/login.js"></script>
 </body>
+ 
 
 </html>
