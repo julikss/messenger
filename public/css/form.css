@@ -37,13 +37,13 @@ body {
     box-sizing: border-box;
 }
 
-form .txt_field {
+form .form-control {
     position: relative;
     border-bottom: 2px solid #adadad;
     margin: 30px 0;
 }
 
-.txt_field input {
+.form-control input {
     width: 100%;
     padding: 0 5px;
     height: 40px;
@@ -54,7 +54,7 @@ form .txt_field {
     color: white;
 }
 
-.txt_field label {
+.form-control label {
     position: absolute;
     top: 50%;
     left: 5px;
@@ -65,7 +65,7 @@ form .txt_field {
     transition: .5s;
 }
 
-.txt_field span::before {
+.form-control span::before {
     content: '';
     position: absolute;
     top: 40px;
@@ -76,14 +76,14 @@ form .txt_field {
     transition: .5s;
 }
 
-.txt_field input:focus~label,
-.txt_field input:valid~label {
+.form-control input:focus~label,
+.form-control input:valid~label {
     top: -5px;
     color: #2691d9;
 }
 
-.txt_field input:focus~span::before,
-.txt_field input:valid~span::before {
+.form-control input:focus~span::before,
+.form-control input:valid~span::before {
     width: 100%;
 }
 
@@ -132,16 +132,6 @@ input[type="submit"]:hover {
     text-decoration: underline;
 }
 
-.rooms_box {
-    border: solid #1d2437;
-    width: 300px;
-    height: 320px;
-    margin-left: 760px;
-    margin-top: 320px;
-    background: #1d2437;
-    border-radius: 10px;
-}
-
 #chatrooms_h1 {
     text-align: center;
     padding: 10px;
@@ -156,7 +146,7 @@ input[type="submit"]:hover {
 }
 
 #room {
-    margin-top: 20px;
+    margin-top: 40px;
     width: 320px;
     height: 30px;
     margin-left: 7px;
@@ -165,11 +155,6 @@ input[type="submit"]:hover {
     color: #adadad;
     font-size: 16px;
     margin-left: 3px;
-}
-
-#hr {
-    margin-top: 70px;
-    background: #ea5c8c;
 }
 
 #username {
@@ -182,12 +167,10 @@ input[type="submit"]:hover {
     margin-top: 15px;
 }
 
-.form-control {
-    margin-top: 30px;
-}
-
 #chatrooms_h3 {
-    font-size: large;
+    font-size: 16px;
+    margin-top: -20px;
+    padding-left: -5px;
 }
 
 #Username {
@@ -201,4 +184,12 @@ input[type="submit"]:hover {
     padding: 3px;
     margin-top: 10px;
     margin-left: 205px;
+}
+
+.select option {
+    background-color: #1d2437;
+}
+
+#login {
+    margin-left: 0px;
 }

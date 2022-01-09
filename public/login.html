@@ -15,22 +15,28 @@
         <hr>
         <form action="chat.html">
             <div class="form-control">
+                <input type="text" name="username" id="username" required>
+                <span></span>
                 <label for="username" id="Username">Username</label>
-                <input type="text" name="username" id="username" placeholder="Enter username..." required />
             </div>
-            <div class="txt_field">
+            <div class="form-control">
                 <input type="password" id="password" required>
                 <span></span>
                 <label>Password</label>
             </div>
             <div class="form-control">
                 <label id="chatrooms_h3">Rooms</label>
-                <select name="room" id="room">
-                    <option value="ULUMANANA">ULUMANANA</option>
-                    <option value="Chatroom">Chatroom</option>          
-        </select>
+                <select name="room" id="room" class="select">
+                    <option value="Chatroom">Chatroom</option>
+                    <option value="Zbochenki">Zbochenki</option>   
+                    <option value="Ulumanana">Ulumanana</option>                   
+                </select>
             </div>
-            <button type="submit" class="join_chat" id="login">Join Chat</button>
+
+            <input type="submit" class="join_chat" id="login" value="Join Chat">
+            <div class="signup_link">
+                Not a member? <a href="./index.html">Sign up</a>
+            </div>
         </form>
     </div>
     <script src="./js/signup-login/login.js"></script>
