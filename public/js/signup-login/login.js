@@ -6,7 +6,7 @@ const loginUser = async event => {
   event.preventDefault();
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
-
+  const room = document.getElementById('room').value;
   const options = {
     method: 'POST',
     headers: {
@@ -22,7 +22,7 @@ const loginUser = async event => {
     .then(res => res.json());
 
   if (result.message === 'Correct Password') {
-    document.location = './chat.html';
+    document.location = `./chat.html?username=${username}&room=${room}`;
   } else if (result.message === 'User not found') {
     alert('Wrong username!');
   } else {
