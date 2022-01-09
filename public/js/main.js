@@ -17,7 +17,10 @@ const { username, room } =  Qs.parse(location.search, {
     ignoreQueryPrefix: true,
 });
 
-console.log(Qs.parse(location.search));
+//console.log(Qs.parse(location.search));
+
+
+let list = [];
 
 socket.emit('joinRoom', { username, room });
 
@@ -44,27 +47,21 @@ chatForm.addEventListener('submit', send => {
   send.target.elements.msg.value = '';
   send.target.elements.msg.focus();
   console.log(msg);
+
+  list.push(msg);
 });
 
- /* 
-let list = [];
+ 
 function saveMessage(message) {
-    if(!message) return;
-    list.push(message);
     localStorage.setItem('message', JSON.stringify(list));
-    console.log(list);
+} 
+
+
+if (localStorage.getItem('message')) {
+       list = JSON.parse(localStorage.getItem('message'));
 }
 
-function loadMessage() {
-  if (localStorage.getItem('message')) {
-        list = JSON.parse(localStorage.getItem('message'));
-       
-        console.log(JSON.stringify(list));
 
-    }
-}
-
-loadMessage();*/
 
 function outputMessage(message) {
   const div = document.createElement('div');
@@ -73,9 +70,8 @@ function outputMessage(message) {
                     <p class="meta">${username}<span>&#160;${message.time}</span></p>
                     `;
     const msg = msgBlock.appendChild(div);
-    //saveMessage(msg.innerText);
     createMenu(msg);
-
+    saveMessage(msg.innerText);
 }
 
 // Add room name to DOM
@@ -147,28 +143,6 @@ function createMenu(el) {
             hideMenu();
             navigator.clipboard.writeText(text);
         });
-
-    const text = el.innerText;
-    const click = e.target;
-    console.log(click);
-    console.log(el);
-
-    //delete message
-    del.addEventListener('click', () => {
-      hideMenu();
-      el.parentNode.removeChild(el);
-    });
-    //clear note
-    clear.addEventListener('click', () => {
-      hideMenu();
-      msgBlock.parentNode.removeChild(msgBlock);
-    });
-
-    //copy text
-    copy.addEventListener('click', () => {
-      hideMenu();
-      navigator.clipboard.writeText(text);
-    });
 
   });
 }
