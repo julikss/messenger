@@ -24,4 +24,15 @@ Our messenger is running on http://localhost:3000
 To start chatting, don't forget to sign up/log in
 
 ## Previews of the messenger
- ![alt text](img/log.png)
+
+### Authorization 
+
+In order to use the app, you must authorize first: 
+
+ ![alt text](https://github.com/julikss/messenger/blob/master/img/log.jpg?raw=true)
+
+### Bot-helper
+
+There are is a bot which can provide useful tips:
+
+ ![alt text](https://github.com/julikss/messenger/blob/master/img/bot.png?raw=true)
