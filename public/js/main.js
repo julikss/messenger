@@ -14,7 +14,7 @@ const userPhoto = document.getElementById('photo_user');
 // eslint-disable-next-line no-undef
 const socket = io('ws://localhost:3000');
 const { username, room } =  Qs.parse(location.search, {
-    ignoreQueryPrefix: true,
+  ignoreQueryPrefix: true,
 });
 
 //console.log(Qs.parse(location.search));
@@ -25,8 +25,8 @@ let list = [];
 socket.emit('joinRoom', { username, room });
 
 socket.on('roomUsers', ({ username, room }) => {
-    outputUsers(username);
-    outputRoomName(room);
+  outputUsers(username);
+  outputRoomName(room);
 });
 
 socket.on('message', message => {
@@ -51,14 +51,14 @@ chatForm.addEventListener('submit', send => {
   list.push(msg);
 });
 
- 
+
 function saveMessage(message) {
-    localStorage.setItem('message', JSON.stringify(list));
-} 
+  localStorage.setItem('message', JSON.stringify(list));
+}
 
 
 if (localStorage.getItem('message')) {
-       list = JSON.parse(localStorage.getItem('message'));
+  list = JSON.parse(localStorage.getItem('message'));
 }
 
 
@@ -69,9 +69,9 @@ function outputMessage(message) {
   div.innerHTML = ` <p class="text">${message.text}</p>
                     <p class="meta">${username}<span>&#160;${message.time}</span></p>
                     `;
-    const msg = msgBlock.appendChild(div);
-    createMenu(msg);
-    saveMessage(msg.innerText);
+  const msg = msgBlock.appendChild(div);
+  createMenu(msg);
+  saveMessage(msg.innerText);
 }
 
 // Add room name to DOM
@@ -116,33 +116,33 @@ function hideMenu() {
 
 //contextmenu
 function createMenu(el) {
-    el.addEventListener('contextmenu', displayMenu);
-   
-    el.addEventListener('contextmenu', e => {
-        e.preventDefault();
+  el.addEventListener('contextmenu', displayMenu);
 
-        const text = el.innerText;
-        const click = e.target;
-        console.log(click);
-        console.log(el);
-        console.log(msgBlock)
+  el.addEventListener('contextmenu', e => {
+    e.preventDefault();
 
-        //delete message
-        del.addEventListener('click', () => {
-            hideMenu();
-            el.parentNode.removeChild(el);
-        });
-        //clear note
-        clear.addEventListener('click', () => {
-            hideMenu();
-            msgBlock.parentNode.removeChild(msgBlock);
-        });
+    const text = el.innerText;
+    const click = e.target;
+    console.log(click);
+    console.log(el);
+    console.log(msgBlock);
 
-        //copy text
-        copy.addEventListener('click', () => {
-            hideMenu();
-            navigator.clipboard.writeText(text);
-        });
+    //delete message
+    del.addEventListener('click', () => {
+      hideMenu();
+      el.parentNode.removeChild(el);
+    });
+    //clear note
+    clear.addEventListener('click', () => {
+      hideMenu();
+      msgBlock.parentNode.removeChild(msgBlock);
+    });
+
+    //copy text
+    copy.addEventListener('click', () => {
+      hideMenu();
+      navigator.clipboard.writeText(text);
+    });
 
   });
 }
