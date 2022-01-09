@@ -13,14 +13,15 @@ const userPhoto = document.getElementById('photo_user');
 
 // eslint-disable-next-line no-undef
 const socket = io('ws://localhost:3000');
-const { username, room } = Qs.parse(location.search);
+const { username, room } =  Qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+});
 
 console.log(Qs.parse(location.search));
 
 socket.emit('joinRoom', { username, room });
 
 socket.on('roomUsers', ({ username, room }) => {
-    console.log(username);
     outputUsers(username);
     outputRoomName(room);
 });
@@ -36,9 +37,7 @@ chatForm.addEventListener('submit', send => {
     let msg = send.target.elements.msg.value;
     msg = msg.trim();
 
-    if (!msg) {
-        return false;
-    }
+    if (!msg) return false;
 
     socket.emit('chatMessage', msg);
 
@@ -47,6 +46,26 @@ chatForm.addEventListener('submit', send => {
     console.log(msg);
 });
 
+ /* 
+let list = [];
+function saveMessage(message) {
+    if(!message) return;
+    list.push(message);
+    localStorage.setItem('message', JSON.stringify(list));
+    console.log(list);
+}
+
+function loadMessage() {
+  if (localStorage.getItem('message')) {
+        list = JSON.parse(localStorage.getItem('message'));
+       
+        console.log(JSON.stringify(list));
+
+    }
+}
+
+loadMessage();*/
+
 function outputMessage(message) {
     const div = document.createElement('div');
     div.classList.add('message1');
@@ -54,6 +73,7 @@ function outputMessage(message) {
                     <p class="meta">${username}<span>&#160;${message.time}</span></p>
                     `;
     const msg = msgBlock.appendChild(div);
+    //saveMessage(msg.innerText);
     createMenu(msg);
 
 }
@@ -66,7 +86,7 @@ function outputRoomName(room) {
 function outputUsers() {
     const div = document.createElement('div');
     div.classList.add('contact2-5');
-    console.log(username);
+    console.log('USER', username);
     div.innerHTML = ` <p class="ulumanana">${username}</p>`;
     userList.appendChild(div);
     const img = document.createElement('IMG');
@@ -102,6 +122,7 @@ function hideMenu() {
 //contextmenu
 function createMenu(el) {
     el.addEventListener('contextmenu', displayMenu);
+   
     el.addEventListener('contextmenu', e => {
         e.preventDefault();
 
@@ -109,6 +130,7 @@ function createMenu(el) {
         const click = e.target;
         console.log(click);
         console.log(el);
+        console.log(msgBlock)
 
         //delete message
         del.addEventListener('click', () => {

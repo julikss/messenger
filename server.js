@@ -49,9 +49,6 @@ io.on('connection', socket => {
     const user = userManager.addUser({ id, username, room });
     socket.join(room);
 
-    // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Welcome to Messenger!'));
-
     // Broadcast when a user connects
     socket.broadcast
       .to(room)
