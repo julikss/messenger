@@ -43,13 +43,14 @@ const commands = [
   ['Use', 'Chat-room for real-time chatting'],
   ['Donate', '544550005444-donation card'],
   ['Possibilities', 'Check Notes'],
-  ['More', 'Date, Time, Signed up'],
+  ['More', 'Date, Time, Signed up, Set Birthday'],
   ['Date', `${getDate()}`],
   ['Time', `${getTime()}`],
   ['Signed up', `${usernames}`],
-  ['Set date of birth', 'Enter your Birthday']
+  ['Set Birthday', 'Enter your Birthday'],
 ];
 let isOpen = false;
+let uniqueDates = [];
 
 const loggedUsers = async () => {
   const result = await fetch('/auth/users')
@@ -59,6 +60,11 @@ const loggedUsers = async () => {
     usernames.push(el.username);
   }
   commands[9][1] = `${usernames}`;
+};
+
+const removeRep = array => {
+  const newArr = array.filter((item, pos) => array.indexOf(item) === pos);
+  return newArr;
 };
 
 const automaticOpen = () => {
@@ -112,10 +118,10 @@ const sendMessage = () => {
             if (e.innerText.includes('.')) {
               const val = e.innerText;
               birthDates.push(val);
+              uniqueDates = removeRep(birthDates);
             }
           }
         }, 7000);
-
       }
     }
   }

@@ -110,7 +110,7 @@ todo.addEventListener('contextmenu', e => {
 
   const note = e.target;
   const text = e.target.innerText.trim();
-  let index = arrOfValues.indexOf(text);
+  const index = arrOfValues.indexOf(text);
 
   function deleteNote() {
     hideMenu();
