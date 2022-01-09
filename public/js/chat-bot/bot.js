@@ -10,6 +10,7 @@ const chatWindow = document.querySelector('.chat-area');
 const emoji = document.querySelector('#emoji-btn');
 const picker = new EmojiButton();
 const usernames = [];
+const birthDates = [];
 
 const getDate = () => {
   const date = new Date();
@@ -42,11 +43,11 @@ const commands = [
   ['Use', 'Chat-room for real-time chatting'],
   ['Donate', '544550005444-donation card'],
   ['Possibilities', 'Check Notes'],
-  //['Chat info', `room: ${room}, your name:${username}`],
   ['More', 'Date, Time, Signed up'],
   ['Date', `${getDate()}`],
   ['Time', `${getTime()}`],
-  ['Signed up', `${usernames}`]
+  ['Signed up', `${usernames}`],
+  ['Set date of birth', 'Enter your Birthday']
 ];
 let isOpen = false;
 
@@ -99,9 +100,23 @@ const sendMessage = () => {
       const reply = `<div class="income-msg">
       <span id="income-m" class="reply">${el[1]}</span>
       </div>`;
+
       setTimeout(() => {
         chatWindow.insertAdjacentHTML('beforeend', reply);
       }, 600);
+
+      if (el[1] === 'Enter your Birthday') {
+        setTimeout(() => {
+          const element = document.querySelectorAll('.out-msg');
+          for (const e of element) {
+            if (e.innerText.includes('.')) {
+              const val = e.innerText;
+              birthDates.push(val);
+            }
+          }
+        }, 7000);
+
+      }
     }
   }
 };
