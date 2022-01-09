@@ -28,7 +28,6 @@ for (const item of todoList) {
   arrOfValues.push(item.todo);
 }
 
-
 function displayNote() {
   let note = '';
   let index;
@@ -64,6 +63,7 @@ function inputNote() {
     checked: false,
     important: false
   };
+
   todoList.push(newTodo);
   saveNote();
   displayNote();
@@ -103,32 +103,30 @@ function hideMenu() {
   menu.style.left = '-200%';
 }
 
-
+todo.addEventListener('contextmenu', displayMenu);
 
 todo.addEventListener('contextmenu', e => {
   e.preventDefault();
-  todo.addEventListener('contextmenu', displayMenu);
-  const text = e.target.innerText.trim();
-  const index = arrOfValues.indexOf(text);
 
-  //delete note
-  del.addEventListener('click', () => {
+  const note = e.target;
+  const text = e.target.innerText.trim();
+  let index = arrOfValues.indexOf(text);
+
+  function deleteNote() {
     hideMenu();
     todoList.splice(index, 1);
     saveNote();
     displayNote();
-  });
+  }
 
-  //clear note
-  clear.addEventListener('click', () => {
+  function clearNotes() {
     hideMenu();
     todoList.splice(0, todoList.length + 1);
     displayNote();
     saveNote();
-  });
+  }
 
-  //mark as important
-  mark.addEventListener('click', () => {
+  function markNote() {
     hideMenu();
     for (const item of todoList) {
       if (item.todo === text) {
@@ -137,17 +135,14 @@ todo.addEventListener('contextmenu', e => {
         saveNote();
       }
     }
-  });
+  }
 
-  //copy text
-  copy.addEventListener('click', () => {
+  function copyToClipboard() {
     hideMenu();
     navigator.clipboard.writeText(text);
-  });
+  }
 
-  //edit text
-  edit.addEventListener('click', () => {
-    const note = e.target;
+  function editText() {
     hideMenu();
     for (const item of todoList) {
       if (item.todo === text) {
@@ -156,7 +151,13 @@ todo.addEventListener('contextmenu', e => {
         saveNote();
       }
     }
-  });
+  }
+
+  del.addEventListener('click', deleteNote);
+  clear.addEventListener('click', clearNotes);
+  mark.addEventListener('click', markNote);
+  copy.addEventListener('click', copyToClipboard);
+  edit.addEventListener('click', editText);
 
 });
 
