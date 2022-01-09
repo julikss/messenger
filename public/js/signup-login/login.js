@@ -3,34 +3,34 @@
 const form = document.getElementById('login');
 
 const loginUser = async event => {
-    event.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const room = document.getElementById('room').value;
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            username,
-            password
-        })
-    };
+  event.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  const room = document.getElementById('room').value;
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username,
+      password
+    })
+  };
 
-    const result = await fetch('/auth/api/login', options)
-        .then(res => res.json());
+  const result = await fetch('/auth/api/login', options)
+    .then(res => res.json());
 
-    if (result.message === 'Correct Password') {
-        document.location = `./chat.html?username=${ username }&room=${ room }`;
-    } else if (result.message === 'User not found') {
-        alert('Wrong username!');
-    } else {
-        alert('Wrong password!');
-        //console.log(result);
-    }
+  if (result.message === 'Correct Password') {
+    document.location = `./chat.html?username=${username}&room=${room}`;
+  } else if (result.message === 'User not found') {
+    alert('Wrong username!');
+  } else {
+    alert('Wrong password!');
+    //console.log(result);
+  }
 };
 
 if (form) {
-    form.addEventListener('click', loginUser);
+  form.addEventListener('click', loginUser);
 }
