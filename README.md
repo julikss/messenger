@@ -1,5 +1,12 @@
 # ULUMANANA messenger
-the best messenger ever
+The best messenger ever
+
+## Description
+This messenger is fast and easy to use. 
+
+Connection is performed via WebSocket.
+
+For chatting in groups there are rooms, which you can join to. 
 
 ## Setup
 
