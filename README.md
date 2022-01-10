@@ -27,12 +27,18 @@ To start chatting, don't forget to sign up/log in
 
 ### Authorization 
 
-In order to use the app, you must authorize first: 
+In order to use the app, you must authorize first and choose a chatroom: 
 
  ![alt text](https://github.com/julikss/messenger/blob/master/img/log.jpg?raw=true)
 
-### Bot-helper
+### Chat
 
-There are is a bot which can provide useful tips:
+You can chat with other users by entering certain chatrooms, and if you have any questions or you feel lonely, you can use our bot-helper which can provide useful tips and support.
 
- ![alt text](https://github.com/julikss/messenger/blob/master/img/bot.png?raw=true)
+ ![alt text](https://github.com/julikss/messenger/blob/master/img/chat.jpg?raw=true)
+
+### Notes
+
+We all tend to forget about our plans, so built-in ToDo List can help you to plan your day: you can easily insert your plans, highlight, delete or cross them out.
+
+ ![alt text](https://github.com/julikss/messenger/blob/master/img/notes.jpg?raw=true)
