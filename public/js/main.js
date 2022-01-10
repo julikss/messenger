@@ -21,37 +21,8 @@ const { username, room } =  Qs.parse(location.search, {
 
 let list = [];
 
-socket.emit('joinRoom', { username, room });
 
-socket.on('roomUsers', ({ username, room }) => {
-  outputUsers(username);
-  outputRoomName(room);
-});
-
-socket.on('message', message => {
-  console.log(message);
-  outputMessage(message);
-});
-
-chatForm.addEventListener('submit', send => {
-  send.preventDefault();
-
-  let msg = send.target.elements.msg.value;
-  msg = msg.trim();
-
-  if (!msg) return false;
-
-  socket.emit('chatMessage', msg);
-
-  send.target.elements.msg.value = '';
-  send.target.elements.msg.focus();
-  console.log(msg);
-
-  list.push(msg);
-});
-
-
-const saveMessage = (message) =>{
+const saveMessage = message => {
   localStorage.setItem('message', JSON.stringify(list));
 };
 
@@ -61,23 +32,12 @@ if (localStorage.getItem('message')) {
 }
 
 
-const outputMessage = (message) =>{
-  const div = document.createElement('div');
-  div.classList.add('message1');
-  div.innerHTML = ` <p class="text">${message.text}</p>
-                    <p class="meta">${username}<span>&#160;${message.time}</span></p>
-                    `;
-  const msg = msgBlock.appendChild(div);
-  createMenu(msg);
-  saveMessage(msg.innerText);
-};
-
 // Add room name to DOM
-const outputRoomName = (room) =>{
+const outputRoomName = room => {
   roomName.innerText = room;
 };
 
-const outputUsers = () =>{
+const outputUsers = () => {
   const div = document.createElement('div');
   div.classList.add('contact2-5');
   div.innerHTML = ` <p class="ulumanana">${username}</p>`;
@@ -92,11 +52,11 @@ document.getElementById('leave_room').addEventListener('click', () => {
   const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
   if (leaveRoom) {
     window.location = '../login.html';
-  } 
+  }
 });
 
 
-const displayMenu = (e) =>{
+const displayMenu = e => {
   e.preventDefault();
   const offset = 20;
   menu.style.top = `${e.clientY - offset}px`;
@@ -104,7 +64,7 @@ const displayMenu = (e) =>{
   menu.classList.remove('off');
 };
 
-const hideMenu = () =>{
+const hideMenu = () => {
   menu.classList.add('off');
   menu.style.top = '-200%';
   menu.style.left = '-200%';
@@ -114,7 +74,7 @@ menu.classList.add('off');
 menu.addEventListener('mouseleave', hideMenu);
 
 //contextmenu
-const createMenu = (el) =>{
+const createMenu = el => {
   el.addEventListener('contextmenu', displayMenu);
 
   el.addEventListener('contextmenu', e => {
@@ -144,3 +104,45 @@ const createMenu = (el) =>{
     });
   });
 };
+
+const outputMessage = message => {
+  const div = document.createElement('div');
+  div.classList.add('message1');
+  div.innerHTML = ` <p class="text">${message.text}</p>
+                    <p class="meta">${username}<span>&#160;${message.time}</span></p>
+                    `;
+  const msg = msgBlock.appendChild(div);
+  createMenu(msg);
+  saveMessage(msg.innerText);
+};
+
+
+socket.emit('joinRoom', { username, room });
+
+socket.on('roomUsers', ({ username, room }) => {
+  outputUsers(username);
+  outputRoomName(room);
+});
+
+socket.on('message', message => {
+  console.log(message);
+  outputMessage(message);
+});5
+
+chatForm.addEventListener('submit', send => {
+  send.preventDefault();
+
+  let msg = send.target.elements.msg.value;
+  msg = msg.trim();
+
+  if (!msg) return false;
+
+  socket.emit('chatMessage', msg);
+
+  send.target.elements.msg.value = '';
+  send.target.elements.msg.focus();
+  console.log(msg);
+
+  list.push(msg);
+});
+

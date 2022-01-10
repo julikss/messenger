@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 router.post(
-  '/registration', 
+  '/registration',
   jsonParser,
   check('username', 'cannot be empty').notEmpty(),
   check('email', 'cannot be empty').isEmail(),

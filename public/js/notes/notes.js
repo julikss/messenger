@@ -13,23 +13,7 @@ const edit = document.getElementById('edit');
 
 let todoList = [];
 
-const loadNotes = ()=>{
-  if (localStorage.getItem('todo')) {
-    todoList = JSON.parse(localStorage.getItem('todo'));
-    displayNote();
-  }
-}
-
-loadNotes();
-
-//get array of only notes' values
-const arrOfValues = [];
-
-for (const item of todoList) {
-  arrOfValues.push(item.todo);
-}
-
-const displayNote = ()=>{
+const displayNote = () => {
   let note = '';
   let index;
   if (todoList.length === 0) todo.innerHTML = '';
@@ -47,13 +31,30 @@ const displayNote = ()=>{
 		`;
     todo.innerHTML = note;
   }
+};
+
+const loadNotes = () => {
+  if (localStorage.getItem('todo')) {
+    todoList = JSON.parse(localStorage.getItem('todo'));
+    displayNote();
+  }
+};
+
+loadNotes();
+
+//get array of only notes' values
+const arrOfValues = [];
+
+for (const item of todoList) {
+  arrOfValues.push(item.todo);
 }
 
-const saveNote = ()=>{
+
+const saveNote = () => {
   localStorage.setItem('todo', JSON.stringify(todoList));
-}
+};
 
-const inputNote =()=>{
+const inputNote = () => {
   if (!addNote.value || arrOfValues.includes(addNote.value)) {
     alert('Please insert correctly!');
     return;
@@ -89,7 +90,7 @@ todo.addEventListener('change', e => {
 
 //contextmenu
 
-const displayMenu = (e)=>{
+const displayMenu = e => {
   e.preventDefault();
   const offset = 20;
   menu.style.top = `${e.clientY - offset}px`;
@@ -97,7 +98,7 @@ const displayMenu = (e)=>{
   menu.classList.remove('off');
 };
 
-const hideMenu = ()=>{
+const hideMenu = () => {
   menu.classList.add('off');
   menu.style.top = '-200%';
   menu.style.left = '-200%';
@@ -115,21 +116,21 @@ todo.addEventListener('contextmenu', e => {
   const text = e.target.innerText.trim();
   const index = arrOfValues.indexOf(text);
 
-  const deleteNote = ()=>{
+  const deleteNote = () => {
     hideMenu();
     todoList.splice(index, 1);
     saveNote();
     displayNote();
   };
 
-  const clearNotes = ()=>{
+  const clearNotes = () => {
     hideMenu();
     todoList.splice(0, todoList.length + 1);
     displayNote();
     saveNote();
   };
 
-  const markNote = ()=>{
+  const markNote = () => {
     hideMenu();
     for (const item of todoList) {
       if (item.todo === text) {
@@ -140,12 +141,12 @@ todo.addEventListener('contextmenu', e => {
     }
   };
 
-  const copyToClipboard = ()=>{
+  const copyToClipboard = () => {
     hideMenu();
     navigator.clipboard.writeText(text);
   };
 
-  const editText = ()=>{
+  const editText = () => {
     hideMenu();
     for (const item of todoList) {
       if (item.todo === text) {

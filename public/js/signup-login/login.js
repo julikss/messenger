@@ -18,7 +18,7 @@ const loginUser = async event => {
     })
   };
 
-  const {message} = await fetch('/auth/api/login', options)
+  const { message } = await fetch('/auth/api/login', options)
     .then(res => res.json());
 
   if (message === 'Correct Password') {

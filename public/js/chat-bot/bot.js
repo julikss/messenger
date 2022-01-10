@@ -77,7 +77,7 @@ const automaticOpen = () => {
 };
 
 openChat.addEventListener('click', () => {
-  chat.style.display = (isOpen) ? 'none' : 'block'; 
+  chat.style.display = (isOpen) ? 'none' : 'block';
   isOpen = !isOpen;
 });
 
