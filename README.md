@@ -41,4 +41,4 @@ You can chat with other users by entering certain chatrooms, and if you have any
 
 We all tend to forget about our plans, so built-in ToDo List can help you to plan your day: you can easily insert your plans, highlight, delete or cross them out.
 
- ![alt text](https://github.com/julikss/messenger/blob/master/img/notes.jpg?raw=true)
+ ![alt text](https://github.com/julikss/messenger/blob/master/img/notes.png)
