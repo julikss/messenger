@@ -69,7 +69,7 @@ const removeRep = array => {
 
 const automaticOpen = () => {
   setTimeout(() => {
-    if (isOpen === false) {
+    if (!isOpen) {
       chat.style.display = 'block';
       isOpen = true;
     }
@@ -77,14 +77,8 @@ const automaticOpen = () => {
 };
 
 openChat.addEventListener('click', () => {
-  if (isOpen === false) {
-    chat.style.display = 'block';
-    isOpen = true;
-  } else {
-    chat.style.display = 'none';
-    isOpen = false;
-  }
-
+  chat.style.display = (isOpen) ? 'none' : 'block';
+  isOpen = !isOpen;
 });
 
 //sending messages

@@ -1,34 +1,19 @@
 'use strict';
-const roomName = document.getElementById('room-name'),
-  addNote = document.querySelector('.note'),
-  addButton = document.querySelector('.add'),
-  todo = document.querySelector('.todo'),
-  menu = document.querySelector('.menu'),
-  del = document.getElementById('delete'),
-  clear = document.getElementById('clear'),
-  mark = document.getElementById('mark'),
-  copy = document.getElementById('copy'),
-  edit = document.getElementById('edit');
+
+const roomName = document.getElementById('room-name');
+const addNote = document.querySelector('.note');
+const addButton = document.querySelector('.add');
+const todo = document.querySelector('.todo');
+const menu = document.querySelector('.menu');
+const del = document.getElementById('delete');
+const clear = document.getElementById('clear');
+const mark = document.getElementById('mark');
+const copy = document.getElementById('copy');
+const edit = document.getElementById('edit');
 
 let todoList = [];
 
-function loadNotes() {
-  if (localStorage.getItem('todo')) {
-    todoList = JSON.parse(localStorage.getItem('todo'));
-    displayNote();
-  }
-}
-
-loadNotes();
-
-//get array of only notes' values
-const arrOfValues = [];
-
-for (const item of todoList) {
-  arrOfValues.push(item.todo);
-}
-
-function displayNote() {
+const displayNote = () => {
   let note = '';
   let index;
   if (todoList.length === 0) todo.innerHTML = '';
@@ -46,13 +31,30 @@ function displayNote() {
 		`;
     todo.innerHTML = note;
   }
+};
+
+const loadNotes = () => {
+  if (localStorage.getItem('todo')) {
+    todoList = JSON.parse(localStorage.getItem('todo'));
+    displayNote();
+  }
+};
+
+loadNotes();
+
+//get array of only notes' values
+const arrOfValues = [];
+
+for (const item of todoList) {
+  arrOfValues.push(item.todo);
 }
 
-function saveNote() {
+
+const saveNote = () => {
   localStorage.setItem('todo', JSON.stringify(todoList));
-}
+};
 
-function inputNote() {
+const inputNote = () => {
   if (!addNote.value || arrOfValues.includes(addNote.value)) {
     alert('Please insert correctly!');
     return;
@@ -68,7 +70,7 @@ function inputNote() {
   saveNote();
   displayNote();
   addNote.value = '';
-}
+};
 
 addButton.addEventListener('click', inputNote);
 
@@ -87,23 +89,25 @@ todo.addEventListener('change', e => {
 
 
 //contextmenu
-menu.classList.add('off');
-menu.addEventListener('mouseleave', hideMenu);
 
-function displayMenu(e) {
+const displayMenu = e => {
   e.preventDefault();
-  menu.style.top = `${e.clientY - 20}px`;
-  menu.style.left = `${e.clientX - 20}px`;
+  const offset = 20;
+  menu.style.top = `${e.clientY - offset}px`;
+  menu.style.left = `${e.clientX - offset}px`;
   menu.classList.remove('off');
-}
+};
 
-function hideMenu() {
+const hideMenu = () => {
   menu.classList.add('off');
   menu.style.top = '-200%';
   menu.style.left = '-200%';
-}
+};
 
 todo.addEventListener('contextmenu', displayMenu);
+
+menu.classList.add('off');
+menu.addEventListener('mouseleave', hideMenu);
 
 todo.addEventListener('contextmenu', e => {
   e.preventDefault();
@@ -112,21 +116,21 @@ todo.addEventListener('contextmenu', e => {
   const text = e.target.innerText.trim();
   const index = arrOfValues.indexOf(text);
 
-  function deleteNote() {
+  const deleteNote = () => {
     hideMenu();
     todoList.splice(index, 1);
     saveNote();
     displayNote();
-  }
+  };
 
-  function clearNotes() {
+  const clearNotes = () => {
     hideMenu();
     todoList.splice(0, todoList.length + 1);
     displayNote();
     saveNote();
-  }
+  };
 
-  function markNote() {
+  const markNote = () => {
     hideMenu();
     for (const item of todoList) {
       if (item.todo === text) {
@@ -135,14 +139,14 @@ todo.addEventListener('contextmenu', e => {
         saveNote();
       }
     }
-  }
+  };
 
-  function copyToClipboard() {
+  const copyToClipboard = () => {
     hideMenu();
     navigator.clipboard.writeText(text);
-  }
+  };
 
-  function editText() {
+  const editText = () => {
     hideMenu();
     for (const item of todoList) {
       if (item.todo === text) {
@@ -151,14 +155,13 @@ todo.addEventListener('contextmenu', e => {
         saveNote();
       }
     }
-  }
+  };
 
   del.addEventListener('click', deleteNote);
   clear.addEventListener('click', clearNotes);
   mark.addEventListener('click', markNote);
   copy.addEventListener('click', copyToClipboard);
   edit.addEventListener('click', editText);
-
 });
 
 
