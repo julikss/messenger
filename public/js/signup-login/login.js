@@ -18,12 +18,12 @@ const loginUser = async event => {
     })
   };
 
-  const result = await fetch('/auth/api/login', options)
+  const {message} = await fetch('/auth/api/login', options)
     .then(res => res.json());
 
-  if (result.message === 'Correct Password') {
+  if (message === 'Correct Password') {
     document.location = `./chat.html?username=${username}&room=${room}`;
-  } else if (result.message === 'User not found') {
+  } else if (message === 'User not found') {
     alert('Wrong username!');
   } else {
     alert('Wrong password!');
